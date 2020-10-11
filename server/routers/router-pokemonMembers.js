@@ -38,4 +38,20 @@ router.post("/", (request, response) => {
         })
 })
 
+router.delete("/:id", (request, response) => {
+    const { id } = request.params;
+    PokemonMembers.remove(id)
+        .then(result => {
+            if (result === 1) {
+                response.status(200).json({id: id})
+            } else {
+                response.status(400).json({message: `{id} does not exist`})
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            response.status(500).json({ message: error.message })
+        })
+})
+
 module.exports = router;

@@ -3,7 +3,8 @@ const db = require("../data/db-config");
 module.exports = {
     find,
     findById,
-    add
+    add,
+    remove
 }
 
 function find() {
@@ -20,4 +21,8 @@ function add(pokemon) {
             const id = ids[0];
             return db("Pokemon Members").where({ id }).first();
         })
+}
+
+function remove(id) {
+    return db("Pokemon Members").where("id", "=", id).del();
 }
