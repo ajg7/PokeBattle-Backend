@@ -14,35 +14,21 @@ module.exports = {
     }
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
   production: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      filename: './server/data/pokemon_database.db3'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      directory: "./server/migrations"
+    },
+    seeds: {
+      directory: "./server/seeds"
     }
   }
 
