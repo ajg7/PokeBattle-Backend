@@ -9,5 +9,5 @@ exports.seed = function(knex) {
       "PokemonNumber": 152
     }
   ]
-  pokemonMembers.length < 6 ? knex("Pokemon Members").insert(pokemonMembers) : knex("Pokemon Members");
+  return knex("Pokemon Members").insert(pokemonMembers);
 };
