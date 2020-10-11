@@ -1,6 +1,6 @@
 {
   "name": "pokedex-server",
-  "version": "1.0.0",
+  "version": "12.18.2",
   "description": "Backend server and database for the Pokedex project",
   "main": "index.js",
   "scripts": {
