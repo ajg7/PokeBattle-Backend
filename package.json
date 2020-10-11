@@ -1,10 +1,7 @@
 {
   "name": "pokedex-server",
   "version": "1.0.0",
-  "description": "Backend server and database for the Pokedex project",
-  "engines": {
-    "node": "12.18.2"
-  },
+  "description": "",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
@@ -22,15 +19,15 @@
   },
   "homepage": "https://github.com/ajg7/pokedex-server#readme",
   "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
-  "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
+    "nodemon": "^2.0.4",
+    "short-id": "0.1.0-1"
+  },
+  "dependencies": {
     "knex": "^0.21.6",
     "knex-cleaner": "^1.3.1",
-    "short-id": "0.1.0-1",
     "sqlite3": "^5.0.0"
   }
 }
