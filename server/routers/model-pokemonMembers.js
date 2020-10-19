@@ -4,6 +4,7 @@ module.exports = {
     find,
     findById,
     add,
+    update,
     remove
 }
 
@@ -21,6 +22,10 @@ function add(pokemon) {
             const id = ids[0];
             return db("Pokemon Members").where({ id }).first();
         })
+}
+
+function update(id, changes) {
+    return db("Pokemon Members").where("id", "=", id).update(changes)
 }
 
 function remove(id) {

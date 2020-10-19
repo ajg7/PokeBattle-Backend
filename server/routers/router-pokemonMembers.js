@@ -38,6 +38,22 @@ router.post("/", (request, response) => {
         }) 
 })
 
+router.put("/:id", (request, response) => {
+    const { id } = request.params;
+
+    PokemonMembers.update(id, request.body)
+        .then(changes => {
+            if(changes) {
+                response.status(200).json({id: id})
+            } else {
+                response.status(400).json({ message: `${id} doesn't exist` })
+            }
+        })
+        .catch(error => {
+            response.status(500).json({message: error.message})
+        })
+})
+
 router.delete("/:id", (request, response) => {
     const { id } = request.params;
     PokemonMembers.remove(id)
