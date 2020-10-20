@@ -36,14 +36,14 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("users")
+                .inTable("pokemon")
                 .onDelete("CASCADE")
                 .onUpdate("CASCADE");
             table.integer("team_Id")
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("users")
+                .inTable("teams")
                 .onDelete("CASCADE")
                 .onUpdate("CASCADE");
             table.string("nickname")
