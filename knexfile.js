@@ -4,7 +4,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './server/data/pokemon_database.db3'
+      filename: './server/data/Pokedex_Database.db3'
     },
     migrations: {
       directory: './server/migrations'
@@ -18,7 +18,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './server/data/pokemon_database.db3'
+      filename: './server/data/Pokedex_Database.db3'
     },
     pool: {
       min: 2,
