@@ -1,9 +1,9 @@
 const express = require("express");
-const PokemonMembers = require("./model-pokemonMembers");
+const Pokemon = require("./model-pokemonMembers");
 const router = express.Router();
 
 router.get("/", (request, response) => {
-    PokemonMembers.find()
+    Pokemon.find()
         .then(pokemon => {
             response.status(200).json(pokemon)
         })
@@ -14,7 +14,7 @@ router.get("/", (request, response) => {
 })
 
 router.get("/:id", (request, response) => {
-    PokemonMembers.findById(request.params.id)
+    Pokemon.findById(request.params.id)
         .then(pokemon => {
             if(pokemon) {
                 response.status(200).json(pokemon)
@@ -29,7 +29,7 @@ router.get("/:id", (request, response) => {
 
 router.post("/", (request, response) => {
     const pokemonData = request.body;
-    PokemonMembers.add(pokemonData)
+    Pokemon.add(pokemonData)
         .then(ids => {
             response.status(201).json({ created: ids[0] })
         })
@@ -41,7 +41,7 @@ router.post("/", (request, response) => {
 router.put("/:id", (request, response) => {
     const { id } = request.params;
 
-    PokemonMembers.update(id, request.body)
+    Pokemon.update(id, request.body)
         .then(changes => {
             if(changes) {
                 response.status(200).json({id: id})
@@ -56,7 +56,7 @@ router.put("/:id", (request, response) => {
 
 router.delete("/:id", (request, response) => {
     const { id } = request.params;
-    PokemonMembers.remove(id)
+    Pokemon.remove(id)
         .then(result => {
             if (result === 1) {
                 response.status(200).json({id: id})

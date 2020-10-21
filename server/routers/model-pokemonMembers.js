@@ -9,25 +9,25 @@ module.exports = {
 }
 
 function find() {
-    return db("Pokemon Members")
+    return db("pokemon")
 }
 
 function findById(id) {
-    return db("Pokemon Members").where("id", "=", id);
+    return db("pokemon").where("id", "=", id);
 }
 
 function add(pokemon) {
-    return db("Pokemon Members").insert(pokemon, "id")
+    return db("pokemon").insert(pokemon, "id")
         .then(ids => {
             const id = ids[0];
-            return db("Pokemon Members").where({ id }).first();
+            return db("pokemon").where({ id }).first();
         })
 }
 
 function update(id, changes) {
-    return db("Pokemon Members").where("id", "=", id).update(changes)
+    return db("pokemon").where("id", "=", id).update(changes)
 }
 
 function remove(id) {
-    return db("Pokemon Members").where("id", "=", id).del();
+    return db("pokemon").where("id", "=", id).del();
 }
