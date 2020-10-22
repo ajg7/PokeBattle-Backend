@@ -39,23 +39,29 @@ describe("authorized admins can post, put, or delete pokemon from table", () => 
     
     let token;
 
-    const pokemonToTest = {
-        "name": "missingno",
-        "type1": "normal",
-        "type2": null,
-        "imgURL": "https://vignette.wikia.nocookie.net/brokenpkmn/images/1/1a/MissingNo.jpg/revision/latest/scale-to-width-down/340?cb=20150308194339",
-        "number": 152,
-        "height": 9,
-        "weight": 1,
-        "entry": "A glitch in the matrix",
-        "habitat": "waters-edge",
-        "legendary": false,
-        "mythical": false,
-        "ancient": false
+    class PokemonForTesting {
+        constructor(name, type1, type2, imgURL, number, height, weight, entry, habitat, legendary, mythical, ancient) {
+            this.name = name;
+            this.type1 = type1;
+            this.type2 = type2;
+            this.imgURL = imgURL;
+            this.number = number;
+            this.height = height;
+            this.weight = weight;
+            this.entry = entry;
+            this.habitat = habitat;
+            this.legendary = legendary;
+            this.mythical = mythical;
+            this.ancient = ancient;
+        }
     }
-
+    
     describe("authorized admins can get all pokemon", () => {
         it("admins can get all pokemon through authPokemonRouter", () => {
+
+            const missingo = new PokemonForTesting("missingno", "normal", null,
+            "https://vignette.wikia.nocookie.net/brokenpkmn/images/1/1a/MissingNo.jpg/revision/latest/scale-to-width-down/340?cb=20150308194339",
+            152, 1, 1, "A glitch in the matrix", "waters-edge", 0, 0, 0); 
 
         })
     })
