@@ -3,6 +3,7 @@ const helmet = require("helmet");
 const PokemonRouter = require("../routers/pokemon/router-pokemon");
 const AuthPokemonRouter = require("../routers/pokemon/auth-router-pokemon");
 const UserRouter = require("../routers/users/router-user");
+const AuthUserRouter = require("../routers/users/auth-user-router");
 
 
 const server = express();
@@ -19,9 +20,10 @@ const validateAdmin = require("../middleware/validateAdmin");
 
 server.use(helmet());
 server.use(express.json());
-server.use("/pokemon", logger, authenticate, validateUser, PokemonRouter);
-server.use("/pokemon/admin", logger, authenticate, AuthPokemonRouter);
+server.use("/pokemon", logger, authenticate, PokemonRouter);
+server.use("/pokemon/admin", logger, authenticate, validateAdmin, AuthPokemonRouter);
 server.use("/", logger, UserRouter);
+server.use("/admin", logger, authenticate, validateUser, validateAdmin, AuthUserRouter);
 
 
 
