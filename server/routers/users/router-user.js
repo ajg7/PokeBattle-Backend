@@ -55,16 +55,4 @@ router.post("/login", (request, response) => {
     }
 })
 
-router.delete("/users/:id", (request, response) => {
-    const { id } = request.params;
-    Users.remove(id)
-        .then(deletedUser => {
-            response.status(200).json({message: "user has been deleted", deletedUser})
-        })
-        .catch(error => {
-            console.log(error)
-            response.status(404).json({ message: error.message })
-        })
-})
-
 module.exports = router;
