@@ -1,7 +1,8 @@
 module.exports = (response, request, next) => {
-    if(request.body.username === "1khthys77_7" && request.body.password === "seven777") {
+    if(request.body.isAdmin) {
+        //Set it so people need a special code to get admin access
         next()
     } else {
-        response.status(400).json({ message: "Not valid username or password" })
+        response.status(400).json({ message: "Not an Admin" })
     }
 }
