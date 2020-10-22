@@ -20,8 +20,8 @@ const validateAdmin = require("../middleware/validateAdmin");
 
 server.use(helmet());
 server.use(express.json());
-server.use("/pokemon", logger, authenticate, validateUser, PokemonRouter);
-server.use("/pokemon/admin", logger, authenticate,validateUser, validateAdmin, AuthPokemonRouter);
+server.use("/pokemon", logger, authenticate, PokemonRouter);
+server.use("/pokemon/admin", logger, authenticate, validateAdmin, AuthPokemonRouter);
 server.use("/", logger, UserRouter);
 server.use("/admin", logger, authenticate, validateUser, validateAdmin, AuthUserRouter);
 
