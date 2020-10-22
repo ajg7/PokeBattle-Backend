@@ -24,7 +24,7 @@ describe("pokemon exist in the pokemon table", () => {
             })
         })
         it("give me a pokemon by its id", () => {
-            const id = 5;
+            const id = 65;
             return supertest(server).get(`/pokemon/${id}`).set("Authorization", token).then(response => {
                 expect(response.status).toBe(200), expect(response.body).toBeDefined();
             })
