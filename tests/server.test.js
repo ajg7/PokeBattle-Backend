@@ -1,4 +1,3 @@
-const { expectCt } = require("helmet");
 const supertest = require("supertest");
 const server = require("../server/api/server");
 
