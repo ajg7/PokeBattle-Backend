@@ -326,7 +326,7 @@ exports.seed = function (knex) {
   {
     name: "dragonite",
     type1: "dragon",
-    type2: null,
+    type2: "flying",
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/149.png",
     number: 149,
     height: 22,

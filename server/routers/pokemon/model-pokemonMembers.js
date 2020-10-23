@@ -3,7 +3,6 @@ const db = require("../../data/db-config");
 module.exports = {
     find,
     findById,
-    findByUser,
     add,
     update,
     remove
@@ -15,10 +14,6 @@ function find() {
 
 function findById(id) {
     return db("pokemon").where("id", "=", id);
-}
-
-function findByUser(userId) {
-    return db("pokemon").where("user_id", "=", userId)
 }
 
 function add(pokemon) {

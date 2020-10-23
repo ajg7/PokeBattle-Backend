@@ -10,8 +10,7 @@ const router = express.Router();
 function getJwt(user) {
     const payload = {
         email: user.email,
-        userId: user.id,
-        isAdmin: user.isAdmin
+        userId: user.id
     }
     const secret = secrets.jwtSecret;
     const options = {
