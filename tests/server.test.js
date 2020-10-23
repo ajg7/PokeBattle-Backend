@@ -1,15 +1,10 @@
 const supertest = require("supertest");
 const server = require("../server/api/server");
-const { missingno, mysteryGhost, skeletonKabutops, skeletonAerodactyl } = require("./classes")
+const { missingno, mysteryGhost, skeletonKabutops, skeletonAerodactyl } = require("./classes/pokemonTestObject")
 
 let token;
 
 describe("pokemon exist in the pokemon table", () => {
-    const credentials = {
-        "email": "1Mario&Luigi7",
-        "password": "Vulpix777",
-        "isAdmin": false
-    }
 
     describe("authentication", () => {
         it("user can signup", () => {
@@ -57,10 +52,18 @@ describe("authorized admins can post, put, or delete pokemon from table", () => 
 })
 
 describe("Admins can get by Id and delete users", () => {
-    describe("Admins can get by Id", () => {
+    it("Admins can get by Id", () => {
         return supertest(server).get("/admin/1").set("Authorization", token).then(response => {
             expect(response.status).toBe(200), expect(response.body).toBeDefined()
         })
     })
-    
+    it("Admins can delete users", () => {
+
+    })
+})
+
+describe("Admins can make other users admin", () => {
+    it("PUT", () => {
+        
+    })
 })

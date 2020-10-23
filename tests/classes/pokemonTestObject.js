@@ -25,10 +25,11 @@ const mysteryGhost = new PokemonForTesting("mystery ghost", "ghost", null,
 
 const skeletonKabutops = new PokemonForTesting("skeleton kabutops", "rock", null, 
             "https://archive-media-0.nyafuu.org/vp/image/1468/58/1468584172753.png",
-            154, 9, 450, "Undead remains of kabutops", "mountain", 0, 0, 1)
+            154, 9, 450, "Undead remains of kabutops", "mountain", 0, 0, 1);
+
 const skeletonAerodactyl = new PokemonForTesting("skeleton aerodactyl", "rock", null, 
             "https://pm1.narvii.com/5801/5f3746c0f5ad861df2d7b302633ab96811cfacd3_hq.jpg",
-            154, 9, 450, "Undead remains of aerodactyl", "mountain", 0, 0, 1)
+            154, 9, 450, "Undead remains of aerodactyl", "mountain", 0, 0, 1);
 
 module.exports = {
     missingno,
