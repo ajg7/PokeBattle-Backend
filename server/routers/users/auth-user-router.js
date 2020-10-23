@@ -3,7 +3,7 @@ const Users = require("./model-user");
 const router = express.Router();
 
 
-router.delete("/users/:id", (request, response) => {
+router.delete("/:id", (request, response) => {
     const { id } = request.params;
     Users.remove(id)
         .then(deletedUser => {

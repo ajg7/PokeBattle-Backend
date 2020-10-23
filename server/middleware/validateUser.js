@@ -1,10 +1,12 @@
-module.exports = (response, request, next) => {
-    if(request.body === undefined) {
-        response.status(400).json({ message: "please enter email and password" })
-    } else if (request.body.email === undefined) {
+
+module.exports = (request, response, next) => {
+    const { email, userId } = request.jwt
+    if(request.jwt === undefined) {
+        response.status(400).json({ message: "please make an account" })
+    } else if (email === undefined) {
         response.status(400).json({ message: "please enter email" })
-    } else if (request.body.password === undefined) {
-        response.status(400).json({ message: "please enter password"})
+    } else if (userId === undefined) {
+        response.status(400).json({ message: "please make an account"})
     } else {
         next();
     }
