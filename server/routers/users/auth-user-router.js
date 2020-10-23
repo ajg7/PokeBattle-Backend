@@ -3,7 +3,38 @@ const Users = require("./model-user");
 const router = express.Router();
 
 
-router.delete("/:id", (request, response) => {
+router.get("/:id", (request, response) => {
+    Users.findById(request.params.id)
+        .then(user => {
+            if(user) {
+                response.status(200).json(user)
+            } else {
+                response.status(404).json({ message: error.message })
+            }
+        })
+        .catch(error => {
+            response.status(500).json({ error: error.message })
+        })
+})
+
+
+router.put("/:id", (request, response) => {
+    const { id } = request.params;
+
+    Users.update(id, request.body)
+        .then(changes => {
+            if(changes) {
+                response.status(200).json({id: id})
+            } else {
+                response.status(400).json({ message: `${id} doesn't exist` })
+            }
+        })
+        .catch(error => {
+            response.status(500).json({message: error.message})
+        })
+})
+
+router.delete("/users/:id", (request, response) => {
     const { id } = request.params;
     Users.remove(id)
         .then(deletedUser => {
