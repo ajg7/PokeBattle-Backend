@@ -23,7 +23,7 @@ server.use(express.json());
 server.use("/pokemon", logger, authenticate, validateUser, PokemonRouter);
 server.use("/pokemon_admin", logger, authenticate, validateUser, validateAdmin, AuthPokemonRouter);
 server.use("/", logger, UserRouter);
-server.use("/admin", logger, authenticate, validateAdmin, AuthUserRouter);
+server.use("/admin", logger, authenticate, validateUser, validateAdmin, AuthUserRouter);
 
 
 
