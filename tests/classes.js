@@ -15,7 +15,7 @@ class PokemonForTesting {
     }
 }
 
-const missingo = new PokemonForTesting("missingno", "normal", null,
+const missingno = new PokemonForTesting("missingno", "normal", null,
             "https://vignette.wikia.nocookie.net/brokenpkmn/images/1/1a/MissingNo.jpg/revision/latest/scale-to-width-down/340?cb=20150308194339",
             152, 1, 1, "A glitch in the matrix", "waters-edge", 0, 0, 0); 
 
