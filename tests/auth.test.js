@@ -12,7 +12,7 @@ describe("pokemon exist in the pokemon table", () => {
                 expect(response.status).toBe(201), expect(response.body).toBeDefined();
             })
         })
-        it.skip("get token to access pokemon router", () => {
+        it("get token to access pokemon router", () => {
             return supertest(server).post("/users/login").send(user1).then(response => {
                 expect(response.status).toBe(200)
                 token = response.body.token;
@@ -21,4 +21,4 @@ describe("pokemon exist in the pokemon table", () => {
     })
 })
 
-module.exports.token = token;
+exports.token = token;

@@ -3,7 +3,7 @@ const server = require("../server/api/server");
 const { token } = require("./auth.test");
 
 
-it.skip("give me the list of pokemon", () => {
+it("give me the list of pokemon", () => {
     return supertest(server).get("/pokemon").set("Authorization", token).then(response => {
         expect(response.status).toBe(200), expect(response.body).toBeDefined();
     })
