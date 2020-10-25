@@ -284,7 +284,7 @@ exports.seed = function (knex) {
   {
     name: "starmie",
     type1: "water",
-    type2: null,
+    type2: "psychic",
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/121.png",
     number: 121,
     height: 11,
