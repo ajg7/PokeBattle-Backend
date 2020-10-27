@@ -5,6 +5,7 @@ const PokemonRouter = require("../routers/pokemon/router-pokemon");
 const AuthPokemonRouter = require("../routers/pokemon/auth-router-pokemon");
 const UserRouter = require("../routers/users/router-user");
 const AuthUserRouter = require("../routers/users/auth-user-router");
+const TeamRouter = require("../routers/teams/router-teams")
 
 
 const server = express();
@@ -26,6 +27,7 @@ server.use("/pokemon", logger, authenticate, validateUser, PokemonRouter);
 server.use("/pokemon_admin", logger, authenticate, validateUser, validateAdmin, AuthPokemonRouter);
 server.use("/users", logger, UserRouter);
 server.use("/admin", logger, authenticate, validateUser, validateAdmin, AuthUserRouter);
+server.use("/team", logger, authenticate, validateUser, TeamRouter);
 
 
 
