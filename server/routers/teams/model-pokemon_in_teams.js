@@ -17,11 +17,7 @@ function findById(id) {
 }
 
 function add(pokemonId) {
-    return db("pokemon_in_teams").insert(pokemonId)
-        .then(ids => {
-            const id = ids[0];
-            return findById(id);
-        })
+    return db("pokemon_in_teams").insert({ pokemon_Id: pokemonId, team_Id: teamId, nickname: nickname })
 }
 
 function remove(id) {
