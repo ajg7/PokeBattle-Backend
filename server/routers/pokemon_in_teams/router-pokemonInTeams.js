@@ -41,4 +41,21 @@ router.put("/:pokemonId", (request, response) => {
         })
 })
 
+router.delete("/:pokemonId", (request, response) => {
+    const { pokemonId } = request.params;
+    PokemonTeams.remove(pokemonId)
+        .then(confirmation => {
+            PokemonTeams.find()
+                .then(newList => {
+                    response.status(200).json({confirmation: confirmation, updatedList: newList})
+                })
+                .catch(error => {
+                    response.status(500).json({ error: error.message })
+                })
+        })
+        .catch(error => {
+            response.status(404).json({ error: error.message })
+        })
+})
+
 module.exports = router;
