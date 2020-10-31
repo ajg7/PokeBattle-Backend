@@ -1,5 +1,6 @@
 module.exports = {
-    
+    add,
+    findByUserId
 }
 
 const db = require("../../data/db-config");
@@ -12,3 +13,10 @@ The pokemon_in_teams table and pokemon table should JOIN to get access to the po
 When you add pokemon, it will add to the team row on the next page, where you can delete a pokemon
 */
 
+function add(pokemon_Id, team_Id) {
+    return db("pokemon_in_teams").insert({pokemon_Id: pokemon_Id, team_Id: team_Id});
+}
+
+function findByUserId(user_Id) {
+    return db("teams").where({ user_Id }).first();
+}
