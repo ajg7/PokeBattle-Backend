@@ -18,6 +18,24 @@ function getJwt(user) {
     }
     return jwt.sign(payload, secret, options);
 }
+/*####### in case I ever need to run a search in postman #######*/
+
+// router.get("/", (request, response) => {
+//     Users.find()
+//         .then(userData => {
+//             response.status(200).json({ data: userData})
+//         })
+// })
+
+// router.get("/:id", (request, response) => {
+//     const { id } = request.params
+//     Users.findById(id)
+//         .then(userData => {
+//             response.status(200).json({ data: userData})
+//         })
+// })
+
+/*############################################################*/
 
 router.post("/signup", (request, response) => {
     const credentials = request.body;
@@ -27,7 +45,8 @@ router.post("/signup", (request, response) => {
 
     Users.add(credentials)
         .then(user => {
-            response.status(201).json({ data: user })
+            const token = getJwt(user)
+            response.status(201).json({ data: user, token })
         })
         .catch(error => {
             console.log(error)
