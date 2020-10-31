@@ -21,17 +21,19 @@ function add(pokemon_Id, team_Id) {
 }
 
 function find() {
-    return db("pokemon_in_teams");
+    return db("teams").first();
 }
 
 function findByUserId(user_Id) {
     return db("teams").where({ user_Id }).first();
 }
 
-function update(pokemon_Id, changes) {
-    return db("pokemon_in_teams").where("pokemon_Id", "=", pokemon_Id).update(changes)
+function update(id, changes) {
+    return db("pokemon_in_teams").where({ id }).update(changes)
 }
 
 function remove(pokemon_Id) {
     return db("pokemon_in_teams").where({ pokemon_Id }).del();
 }
+
+//Next need to create a function that will join pokemon_in_teams with pokemon table, so we can access the data

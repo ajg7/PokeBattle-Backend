@@ -2,7 +2,15 @@ const express = require("express");
 const router = express.Router();
 const PokemonTeams = require("./model-pokemon_in_teams");
 
-
+router.get("/", (request, response) => {
+    PokemonTeams.find()
+        .then(data => {
+            response.status(200).json({ data: data })
+        })
+        .catch(error => {
+            response.status(500).json({ error: error.message })
+        })
+})
 
 router.post("/:pokemonId", (request, response) => {
     const { userId } = request.jwt;
@@ -12,8 +20,7 @@ router.post("/:pokemonId", (request, response) => {
     .then(teams => {
         PokemonTeams.add(pokemonId, teams.id)
         .then(pokemonTeam => {
-            console.log(pokemonTeam)
-            response.status(201).json({ tableId: pokemonTeam, teams: teams })
+            response.status(201).json({ tableId: pokemonTeam, teams: teams.id })
         })
         .catch(error => {
             console.log(error);
@@ -22,13 +29,13 @@ router.post("/:pokemonId", (request, response) => {
     })
     .catch(error => {
         console.log(error)
-        response.status(500).json({ error: error.message })
+        response.status(500).json({ hello: "Hello43", error: error.message })
     })
 })
 
-router.put("/:pokemonId", (request, response) => {
-    const { pokemonId } = request.params;
-    PokemonTeams.update(pokemonId, request.body)
+router.put("/:id", (request, response) => {
+    const { id } = request.params;
+    PokemonTeams.update(id, request.body)
         .then(changes => {
             if(changes) {
                 response.status(200).json({ nickname: changes })
@@ -41,9 +48,9 @@ router.put("/:pokemonId", (request, response) => {
         })
 })
 
-router.delete("/:pokemonId", (request, response) => {
-    const { pokemonId } = request.params;
-    PokemonTeams.remove(pokemonId)
+router.delete("/:id", (request, response) => {
+    const { id } = request.params;
+    PokemonTeams.remove(id)
         .then(confirmation => {
             PokemonTeams.find()
                 .then(newList => {
