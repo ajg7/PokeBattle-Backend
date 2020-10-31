@@ -26,5 +26,19 @@ router.post("/:pokemonId", (request, response) => {
     })
 })
 
+router.put("/:pokemonId", (request, response) => {
+    const { pokemonId } = request.params;
+    PokemonTeams.update(pokemonId, request.body)
+        .then(changes => {
+            if(changes) {
+                response.status(200).json({ nickname: changes })
+            } else {
+                response.status(400).json({ error: error.message })
+            }
+        })
+        .catch(error => {
+            response.status(500).json({error: error.message})
+        })
+})
 
 module.exports = router;

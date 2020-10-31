@@ -1,6 +1,7 @@
 module.exports = {
     add,
-    findByUserId
+    findByUserId, 
+    update
 }
 
 const db = require("../../data/db-config");
@@ -19,4 +20,8 @@ function add(pokemon_Id, team_Id) {
 
 function findByUserId(user_Id) {
     return db("teams").where({ user_Id }).first();
+}
+
+function update(pokemon_Id, changes) {
+    return db("pokemon_in_teams").where("pokemon_Id", "=", pokemon_Id).update(changes)
 }
