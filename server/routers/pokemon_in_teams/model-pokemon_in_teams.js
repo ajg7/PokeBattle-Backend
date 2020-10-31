@@ -21,7 +21,7 @@ function add(pokemon_Id, team_Id) {
 }
 
 function find() {
-    return db("teams").first();
+    return db("teams");
 }
 
 function findByUserId(user_Id) {

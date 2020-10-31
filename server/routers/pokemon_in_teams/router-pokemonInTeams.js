@@ -20,7 +20,7 @@ router.post("/:pokemonId", (request, response) => {
     .then(teams => {
         PokemonTeams.add(pokemonId, teams.id)
         .then(pokemonTeam => {
-            response.status(201).json({ tableId: pokemonTeam, teams: teams.id })
+            response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id })
         })
         .catch(error => {
             console.log(error);
@@ -29,7 +29,7 @@ router.post("/:pokemonId", (request, response) => {
     })
     .catch(error => {
         console.log(error)
-        response.status(500).json({ hello: "Hello43", error: error.message })
+        response.status(500).json({ error: error.message })
     })
 })
 
@@ -38,7 +38,7 @@ router.put("/:id", (request, response) => {
     PokemonTeams.update(id, request.body)
         .then(changes => {
             if(changes) {
-                response.status(200).json({ nickname: changes })
+                response.status(200).json({ confirmation: changes, nickname: request.body.nickname })
             } else {
                 response.status(400).json({ error: error.message })
             }
