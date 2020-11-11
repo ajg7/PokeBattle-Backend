@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const PokemonTeams = require("./model-pokemon_in_teams");
 
-router.get("/", (request, response) => {
-    PokemonTeams.find()
+router.get("/:teamId", (request, response) => {
+    const { teamId } = request.params;
+    PokemonTeams.find(teamId)
         .then(data => {
             response.status(200).json({ data: data })
         })

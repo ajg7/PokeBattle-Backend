@@ -20,8 +20,8 @@ function add(pokemon_Id, team_Id) {
     return db("pokemon_in_teams").insert({pokemon_Id: pokemon_Id, team_Id: team_Id});
 }
 
-function find() {
-    return db("pokemon_in_teams");
+function find(team_Id) {
+    return db("pokemon_in_teams").where({ team_Id });
 }
 
 function findByUserId(user_Id) {
