@@ -20,13 +20,13 @@ router.post("/:pokemonId", (request, response) => {
     PokemonTeams.findByUserId(userId)
     .then(teams => {
         PokemonTeams.add(pokemonId, teams.id)
-        .then(pokemonTeam => {
-            response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id })
-        })
-        .catch(error => {
-            console.log(error);
-            response.status(500).json({ error: error.message })
-        })
+            .then(pokemonTeam => {
+                response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id })
+            })
+            .catch(error => {
+                console.log(error);
+                response.status(500).json({ error: error.message })
+            })
     })
     .catch(error => {
         console.log(error)
