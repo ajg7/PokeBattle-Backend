@@ -29,12 +29,12 @@ function findByUserId(user_Id) {
     return db("teams").where({ user_Id }).first();
 }
 
-function getPokemonData(pokemon_Id) {
+function getPokemonData(team_Id) {
     return db("pokemon_in_teams")
         .join("pokemon", "pokemon_in_teams.pokemon_Id", "=", "pokemon.id")
         .select("pokemon_in_teams.pokemon_Id", "pokemon_in_teams.team_Id", "pokemon_in_teams.nickname", "pokemon.name", "pokemon.type1", "pokemon.type2", "pokemon.imgURL",
         "pokemon.ancient", "pokemon.legendary", "pokemon.mythical")
-        .where({ pokemon_Id })
+        .where({ team_Id })
 }
 
 function update(id, changes) {

@@ -6,7 +6,14 @@ router.get("/:teamId", (request, response) => {
     const { teamId } = request.params;
     PokemonTeams.find(teamId)
         .then(data => {
-            response.status(200).json({ data: data })
+            console.log(data[0].pokemon_Id)
+            PokemonTeams.getPokemonData(teamId)
+                .then(newData => {
+                    response.status(200).json({ newData: newData})
+                })
+                .catch(error => {
+                    response.status(500).json({error: error.message})
+                })
         })
         .catch(error => {
             response.status(500).json({ error: error.message })
@@ -19,20 +26,33 @@ router.post("/:pokemonId", (request, response) => {
     // Use user id to get the id from the teams table, and then insert it into the add function
     PokemonTeams.findByUserId(userId)
         .then(teams => {
-            PokemonTeams.add(pokemonId, teams.id)
-                .then(pokemonTeam => {
-                    PokemonTeams.getPokemonData(pokemonId)
-                        .then(data => {
-                            response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id, pokemonId: pokemonId, pokemonData: data[0] })
-                        })
-                        .catch(error => {
-                            console.log(error);
-                            response.status(500).json({ error: error.message })
-                        })
-                })
-                .catch(error => {
-                    console.log(error);
-                    response.status(500).json({ error: error.message })
+            PokemonTeams.find(teams.id)
+                .then(pokemon => {
+                    // console.log(pokemon.length)
+                    // let count = 0;
+                    // pokemon.forEach(member => {
+                    //     if (teams.id === member.team_Id) count++
+                    // })
+                    // if (count < 6) {
+                        PokemonTeams.add(pokemonId, teams.id)
+                            .then(pokemonTeam => {
+                                console.log(pokemonTeam)
+                                PokemonTeams.getPokemonData(pokemonId)
+                                    .then(data => {
+                                        response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id, pokemonId: pokemonId, pokemonData: data[0] })
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                        response.status(500).json({ error: error.message })
+                                    })
+                            })
+                            .catch(error => {
+                                console.log(error);
+                                response.status(500).json({ error: error.message })
+                            })
+                    // } else {
+                    //     response.status(400).json({ error: "Limited to Six"})
+                    // }
                 })
         })
         .catch(error => {
@@ -56,17 +76,11 @@ router.put("/:id", (request, response) => {
         })
 })
 
-router.delete("/:id", (request, response) => {
-    const { id } = request.params;
-    PokemonTeams.remove(id)
+router.delete("/:pokemonId", (request, response) => {
+    const { pokemonId } = request.params;
+    PokemonTeams.remove(pokemonId)
         .then(confirmation => {
-            PokemonTeams.find()
-                .then(newList => {
-                    response.status(200).json({confirmation: confirmation, updatedList: newList})
-                })
-                .catch(error => {
-                    response.status(500).json({ error: error.message })
-                })
+            response.status(200).json({message: "pokemon has been deleted"})
         })
         .catch(error => {
             response.status(404).json({ error: error.message })
