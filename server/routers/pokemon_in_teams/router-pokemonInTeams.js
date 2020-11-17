@@ -18,20 +18,27 @@ router.post("/:pokemonId", (request, response) => {
     const { pokemonId } = request.params;
     // Use user id to get the id from the teams table, and then insert it into the add function
     PokemonTeams.findByUserId(userId)
-    .then(teams => {
-        PokemonTeams.add(pokemonId, teams.id)
-            .then(pokemonTeam => {
-                response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id })
-            })
-            .catch(error => {
-                console.log(error);
-                response.status(500).json({ error: error.message })
-            })
-    })
-    .catch(error => {
-        console.log(error)
-        response.status(500).json({ error: error.message })
-    })
+        .then(teams => {
+            PokemonTeams.add(pokemonId, teams.id)
+                .then(pokemonTeam => {
+                    PokemonTeams.getPokemonData(pokemonId)
+                        .then(data => {
+                            response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id, pokemonId: pokemonId, pokemonData: data[0] })
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            response.status(500).json({ error: error.message })
+                        })
+                })
+                .catch(error => {
+                    console.log(error);
+                    response.status(500).json({ error: error.message })
+                })
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(500).json({ error: error.message })
+        })
 })
 
 router.put("/:id", (request, response) => {
