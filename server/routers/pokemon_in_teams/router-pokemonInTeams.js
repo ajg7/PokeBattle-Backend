@@ -9,7 +9,7 @@ router.get("/:teamId", (request, response) => {
             console.log(data[0].pokemon_Id)
             PokemonTeams.getPokemonData(teamId)
                 .then(newData => {
-                    response.status(200).json({ newData: newData})
+                    response.status(200).json(newData)
                 })
                 .catch(error => {
                     response.status(500).json({error: error.message})
@@ -61,9 +61,9 @@ router.post("/:pokemonId", (request, response) => {
         })
 })
 
-router.put("/:id", (request, response) => {
-    const { id } = request.params;
-    PokemonTeams.update(id, request.body)
+router.put("/:pokemonId", (request, response) => {
+    const { pokemonId } = request.params;
+    PokemonTeams.update(pokemonId, request.body)
         .then(changes => {
             if(changes) {
                 response.status(200).json({ confirmation: changes, nickname: request.body.nickname })

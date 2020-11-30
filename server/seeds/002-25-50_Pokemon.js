@@ -130,7 +130,7 @@ exports.seed = function (knex) {
   {
     name: "nidoking",
     type1: "poison",
-    type2: null,
+    type2: "ground",
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/34.png",
     number: 34,
     height: 14,

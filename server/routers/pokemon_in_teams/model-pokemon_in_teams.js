@@ -37,8 +37,9 @@ function getPokemonData(team_Id) {
         .where({ team_Id })
 }
 
-function update(id, changes) {
-    return db("pokemon_in_teams").where({ id }).update(changes)
+function update(pokemon_Id, changes) {
+    //Might need to change back to the primary key
+    return db("pokemon_in_teams").where({ pokemon_Id }).update(changes)
 }
 
 function remove(pokemon_Id) {
