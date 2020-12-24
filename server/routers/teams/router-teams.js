@@ -3,6 +3,17 @@ const router = express.Router();
 const Teams = require("./model-teams")
 
 
+router.get("/:userId", (request, response) => {
+    const { userId } = request.params;
+    Teams.findById(userId)
+        .then(team => {
+            response.status(200).json({ teamId: team.id, userId: userId});
+        })
+        .catch(error => {
+            response.status(400).json({ error: error.message })
+        })
+})
+
 router.post("/", (request, response) => {
     const { userId } = request.jwt
     console.log(userId)

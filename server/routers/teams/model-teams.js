@@ -7,16 +7,17 @@ module.exports = {
 
 const db = require("../../data/db-config");
 
+
 function find() {
-    return db("teams")
+    return db("teams");
 }
 
-function findById(id) {
-    return db("teams").where({ id }).first()
+function findById(user_Id) {
+    return db("teams").where({ user_Id }).select("id").first();
 }
 
 function add(user_Id) {
-    return db("teams").insert({user_Id: user_Id})
+    return db("teams").insert({user_Id: user_Id});
 }
 
 function remove(id) {

@@ -61,7 +61,7 @@ router.post("/login", (request, response) => {
             .then(([user]) => {
                 if(user && bcryptjs.compareSync(password, user.password)) {
                     const token = getJwt(user);
-                    response.status(200).json({ message: "Welcome!", token })
+                    response.status(200).json({ message: "Welcome!", token, userId: user.id })
                 } else {
                     response.status(400).json({ message: "Invalid Characters" })
                 }
