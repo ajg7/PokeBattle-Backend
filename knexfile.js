@@ -1,11 +1,16 @@
-module.exports = {
+const dotenv = require("dotenv");
+dotenv.config({ path: '../.env' });
 
+module.exports = {
   development: {
-    client: 'sqlite3',
+    client: "pg",
     connection: {
-      filename: './server/data/Pokedex_Database.db3'
+      host : '127.0.0.1',
+      user : 'postgres',
+      password : 'Romans8:37',
+      database : 'pokebattle',
+      charset: 'utf8'
     },
-    useNullAsDefault: true,
     migrations: {
       directory: './server/migrations'
     },
@@ -14,8 +19,19 @@ module.exports = {
     }
   },
 
+  testing: {
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: './server/migrations',
+    },
+    seeds: { 
+      directory: './server/seeds' 
+    },
+  },
+
   production: {
-    client: 'sqlite3',
+    client: "pg",
     connection: {
       filename: process.env.DATABASE_URL
     },
@@ -23,7 +39,6 @@ module.exports = {
       min: 2,
       max: 10
     },
-    useNullAsDefault: true,
     migrations: {
       directory: "./server/migrations"
     },
