@@ -1,15 +1,6 @@
-module.exports = {
-    add,
-    find,
-    findBy,
-    findById,
-    update,
-    remove
-}
-
 const db = require("../../data/db-config")
 
-function add(newUser) {
+const add = newUser => {
     return db("users").insert(newUser)
         .then(ids => {
             const id = ids[0];
@@ -17,22 +8,31 @@ function add(newUser) {
         })
 }
 
-function findBy(filter) {
+const findBy = filter => {
     return db("users").where(filter).orderBy("id");
 }
 
-function find() {
+const find = () => {
     return db("users")
 }
 
-function findById(id) {
+const findById = (id) => {
     return db("users").where({ id }).first();
 }
 
-function update(id, changes) {
+const update = (id, changes) => {
     return db("users").where("id", "=", id).update(changes)
 }
 
-function remove(id) {
+const remove = id => {
     return db("users").where({ id }).del();
+}
+
+module.exports = {
+    add,
+    find,
+    findBy,
+    findById,
+    update,
+    remove
 }
