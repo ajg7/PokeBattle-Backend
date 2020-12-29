@@ -19,9 +19,13 @@ module.exports = {
     }
   },
 
-  testing: {
-    client: 'pg',
-    connection: process.env.DB_URL,
+  staging: {
+    client: 'postgresql',
+    connection: {
+      database: "pokebattle",
+      user: "postgres",
+      password: "Romans8:37"
+    },
     migrations: {
       directory: './server/migrations',
     },
@@ -31,9 +35,11 @@ module.exports = {
   },
 
   production: {
-    client: "pg",
+    client: "postgresql",
     connection: {
-      filename: process.env.DATABASE_URL
+      database: "pokebattle",
+      user: "postgres",
+      password: "Romans8:37"
     },
     pool: {
       min: 2,

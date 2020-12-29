@@ -13,7 +13,8 @@ exports.seed = function (knex) {
     habitat: "cave",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "meowth",
@@ -27,7 +28,8 @@ exports.seed = function (knex) {
     habitat: "urban",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "persian",
@@ -41,7 +43,8 @@ exports.seed = function (knex) {
     habitat: "cave",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "psyduck",
@@ -55,7 +58,8 @@ exports.seed = function (knex) {
     habitat: "waters-edge",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "golduck",
@@ -69,7 +73,8 @@ exports.seed = function (knex) {
     habitat: "waters-edge",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "mankey",
@@ -83,7 +88,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "primeape",
@@ -97,7 +103,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "growlithe",
@@ -111,7 +118,8 @@ exports.seed = function (knex) {
     habitat: "grasland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "arcanine",
@@ -125,7 +133,8 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "poliwag",
@@ -139,7 +148,8 @@ exports.seed = function (knex) {
     habitat: "waters-edge",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "poliwhirl",
@@ -153,7 +163,8 @@ exports.seed = function (knex) {
     habitat: "waters-edge",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "poliwrath",
@@ -167,7 +178,8 @@ exports.seed = function (knex) {
     habitat: "waters-edge",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "abra",
@@ -181,7 +193,8 @@ exports.seed = function (knex) {
     habitat: "urban",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "kadabra",
@@ -195,7 +208,8 @@ exports.seed = function (knex) {
     habitat: "urban",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "alakazam",
@@ -209,7 +223,8 @@ exports.seed = function (knex) {
     habitat: "urban",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "machop",
@@ -223,7 +238,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "machoke",
@@ -237,7 +253,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "machamp",
@@ -251,7 +268,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "bellsprout",
@@ -265,7 +283,8 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "weepinbell",
@@ -279,7 +298,8 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "victreebel",
@@ -293,7 +313,8 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "tentacool",
@@ -307,7 +328,8 @@ exports.seed = function (knex) {
     habitat: "sea",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "tentacruel",
@@ -321,7 +343,8 @@ exports.seed = function (knex) {
     habitat: "sea",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "geodude",
@@ -335,7 +358,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   {
     name: "graveler",
@@ -349,7 +373,8 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto"
   },
   ]
 
