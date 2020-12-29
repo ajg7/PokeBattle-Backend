@@ -1,22 +1,14 @@
 const db = require("../../data/db-config");
 
-module.exports = {
-    find,
-    findById,
-    add,
-    update,
-    remove
-}
-
-function find() {
+const find = () => {
     return db("pokemon")
 }
 
-function findById(id) {
+const findById = id => {
     return db("pokemon").where("id", "=", id);
 }
 
-function add(pokemon) {
+const add = pokemon => {
     return db("pokemon").insert(pokemon, "id")
         .then(ids => {
             const id = ids[0];
@@ -24,10 +16,18 @@ function add(pokemon) {
         })
 }
 
-function update(id, changes) {
+const update = (id, changes) => {
     return db("pokemon").where("id", "=", id).update(changes)
 }
 
-function remove(id) {
+const remove = id => {
     return db("pokemon").where("id", "=", id).del();
+}
+
+module.exports = {
+    find,
+    findById,
+    add,
+    update,
+    remove
 }
