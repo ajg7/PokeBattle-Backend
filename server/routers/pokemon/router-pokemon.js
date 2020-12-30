@@ -26,16 +26,5 @@ router.get("/:id", (request, response) => {
             response.status(500).json({ error: error.message })
         })
 })
-router.post("/", (request, response) => {
-    const pokemonData = request.body;
-    Pokemon.add(pokemonData)
-        .then(ids => {
-            response.status(201).json({ created: ids[0] })
-        })
-        .catch(error => {
-            response.status(500).json({ message: error.message })
-        }) 
-})
-
 
 module.exports = router;
