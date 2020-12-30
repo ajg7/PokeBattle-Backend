@@ -6,7 +6,7 @@ const AuthPokemonRouter = require("../routers/pokemon/auth-router-pokemon");
 const UserRouter = require("../routers/users/router-user");
 const AuthUserRouter = require("../routers/users/auth-user-router");
 const TeamRouter = require("../routers/teams/router-teams")
-const PokemonTeamRouter = require("../routers/pokemon_in_teams/router-pokemonInTeams");
+const PokemonTeamRouter = require("../routers/team_members/router-team_members");
 
 
 const server = express();

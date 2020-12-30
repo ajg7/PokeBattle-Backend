@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const PokemonTeams = require("./model-pokemon_in_teams");
+const PokemonTeams = require("./model-team_members");
 
 router.get("/:teamId", (request, response) => {
     const { teamId } = request.params;
