@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest --watch",
     "server": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "seeds": "knex seed:run",
+    "latest": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",

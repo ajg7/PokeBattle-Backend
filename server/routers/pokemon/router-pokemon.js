@@ -1,5 +1,5 @@
 const express = require("express");
-const Pokemon = require("./model-pokemonMembers");
+const Pokemon = require("./model-pokemon");
 const router = express.Router();
 
 router.get("/", (request, response) => {
@@ -25,6 +25,16 @@ router.get("/:id", (request, response) => {
         .catch(error => {
             response.status(500).json({ error: error.message })
         })
+})
+router.post("/", (request, response) => {
+    const pokemonData = request.body;
+    Pokemon.add(pokemonData)
+        .then(ids => {
+            response.status(201).json({ created: ids[0] })
+        })
+        .catch(error => {
+            response.status(500).json({ message: error.message })
+        }) 
 })
 
 
