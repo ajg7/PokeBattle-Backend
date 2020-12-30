@@ -12,14 +12,6 @@ const findBy = filter => {
     return db("users").where(filter).orderBy("id");
 }
 
-const find = () => {
-    return db("users")
-}
-
-const findById = id => {
-    return db("users").where({ id }).first();
-}
-
 const update = (id, changes) => {
     return db("users").where("id", "=", id).update(changes)
 }
@@ -30,9 +22,7 @@ const remove = id => {
 
 module.exports = {
     add,
-    find,
     findBy,
-    findById,
     update,
     remove
 }

@@ -7,7 +7,7 @@ const { isValid } = require("../../auth/service-users");
 const router = express.Router();
 
 
-function getJwt(user) {
+const getJwt = user => {
     const payload = {
         email: user.email,
         userId: user.id
@@ -18,25 +18,8 @@ function getJwt(user) {
     }
     return jwt.sign(payload, secret, options);
 }
-/*####### in case I ever need to run a search in postman #######*/
 
-// router.get("/", (request, response) => {
-//     Users.find()
-//         .then(userData => {
-//             response.status(200).json({ data: userData})
-//         })
-// })
-
-// router.get("/:id", (request, response) => {
-//     const { id } = request.params
-//     Users.findById(id)
-//         .then(userData => {
-//             response.status(200).json({ data: userData})
-//         })
-// })
-
-/*############################################################*/
-
+// Signup
 router.post("/signup", (request, response) => {
     const credentials = request.body;
     const rounds = process.env.BCRYPT_ROUNDS || 7;
@@ -54,6 +37,8 @@ router.post("/signup", (request, response) => {
         })
 })
 
+
+// Login
 router.post("/login", (request, response) => {
     const { email, password } = request.body;
     if(isValid(request.body)) {
