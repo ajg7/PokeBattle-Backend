@@ -18,18 +18,14 @@ const validateUser = require("../middleware/validateUser");
 //Only admin can post, put, and delete the pokemon table
 const validateAdmin = require("../middleware/validateAdmin");
 
-
-
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use("/pokemon", logger, PokemonRouter);
 server.use(["/user", "/users"], logger, UserRouter);
-server.use("/admin", logger, authenticate, validateUser, validateAdmin, AuthUserRouter);
+server.use(["/user/auth", "users/auth"], logger, authenticate, validateUser, AuthUserRouter);
 server.use("/team", logger, authenticate, validateUser, TeamRouter);
 server.use("/pokemon_team", logger, authenticate, validateUser, TeamMembersRouter);
-
-
 
 server.get("/", (request, response) => {
     response.status(200).json({ Frankenstein: "It's alive!!!!!" });

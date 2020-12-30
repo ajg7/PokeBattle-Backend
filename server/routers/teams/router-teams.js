@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Teams = require("./model-teams")
 
-
+// Returns teams made by a specific user
 router.get("/:userId", (request, response) => {
     const { userId } = request.params;
-    Teams.findById(userId)
+    Teams.findByUserId(userId)
         .then(team => {
             response.status(200).json({ teamId: team.id, userId: userId});
         })
@@ -14,9 +14,9 @@ router.get("/:userId", (request, response) => {
         })
 })
 
+// Makes a team
 router.post("/", (request, response) => {
     const { userId } = request.jwt
-    console.log(userId)
     Teams.add(userId)
         .then(team => {
             console.log(team)
@@ -27,6 +27,7 @@ router.post("/", (request, response) => {
         })
 })
 
+// Deletes a team
 router.delete("/:id", (request, response) => {
     const { id } = request.params;
     Teams.remove(id)

@@ -11,7 +11,7 @@ const add = (pokemon_Id, team_Id) => {
     return db("team_members").insert({pokemon_Id: pokemon_Id, team_Id: team_Id});
 }
 
-const find = team_Id => {
+const findByTeamId = team_Id => {
     return db("team_members").where({ team_Id });
 }
 
@@ -39,7 +39,7 @@ const remove = pokemon_Id => {
 
 module.exports = {
     add,
-    find,
+    findByTeamId,
     findByUserId, 
     getPokemonData,
     update,
