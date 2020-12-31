@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 const getJwt = user => {
+    console.log(user)
     const payload = {
         email: user.email,
         userId: user.id
