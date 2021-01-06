@@ -1,9 +1,25 @@
 const express = require("express");
 const bcryptjs = require("bcryptjs");
 const Users = require("./model-user");
-const { isValid } = require("../../auth/service-users");
 const router = express.Router();
 const tokenHelper = require("./tokenHelper");
+const { isValid } = require("../../auth/service-users");
+
+// Signup
+router.post("/", (request, response) => {
+    const credentials = request.body;
+    const rounds = process.env.BCRYPT_ROUNDS || 7;
+    const hash = bcryptjs.hashSync(credentials.password, rounds);
+    credentials.password = hash;
+    const token = tokenHelper.getJwt(credentials)
+    Users.register(credentials)
+        .then(result => {
+            response.status(201).json({ token })
+        })
+        .catch(error => {
+            response.status(500).json({ error: error.message })
+        })
+})
 
 // Login
 router.post("/", (request, response) => {
@@ -25,5 +41,6 @@ router.post("/", (request, response) => {
         response.status(400).json({ message: "Please Provide Email and Password" })
     }
 })
+
 
 module.exports = router;
