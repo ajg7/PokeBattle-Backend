@@ -10,6 +10,8 @@ const findBy = filter => db("users").where(filter).orderBy("id");
 
 const remove = id => db("users").where({ id }).del();
 
+const update = (id, change) => db("users").where({ id }).update(change);
+
 
 
 module.exports = {
@@ -17,5 +19,6 @@ module.exports = {
     findById,
     find,
     findBy,
-    remove
+    remove,
+    update
 }
