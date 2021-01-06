@@ -443,8 +443,6 @@ exports.seed = function (knex) {
     modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
     shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/151.png"
   },
-
-
   ]
 
   return knex("pokemon").insert(pokemon)

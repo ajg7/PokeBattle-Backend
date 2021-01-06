@@ -1,27 +1,21 @@
 const db = require("../../data/db-config");
 
-function findById(id) {
-    return db("users").where({ id }).first();
-}
 
-function find() {
-    return db("users").where({ id }).first();
-}
+// Signup
+/*
+Need to post body to the db that includes email and a hashed password
+*/
+const register = newUser => db("users").insert(newUser);
 
-function add(newUser) {
-    return db("users").insert(newUser)
-        .then(ids => {
-            const id = ids[0];
-            return findById(id);
-        })
-}
+const findById = id => db("users").where({ id }).first();
 
-function findBy(filter) {
-    return db("users").where(filter).orderBy("id");
-}
+const find = () => db("users").where({ id }).first();
+
+const findBy = filter => db("users").where(filter).orderBy("id");
+
 module.exports = {
+    register,
     findById,
     find,
-    add,
     findBy
 }
