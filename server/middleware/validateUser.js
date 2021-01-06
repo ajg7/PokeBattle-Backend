@@ -1,7 +1,6 @@
 
 module.exports = (request, response, next) => {
-    const { email, userId } = request.jwt;
-    console.log(request.jwt)
+    const { email } = request.jwt;
     if(request.jwt === undefined) {
         response.status(400).json({ message: "please make an account" });
     } else if (email === undefined) {
