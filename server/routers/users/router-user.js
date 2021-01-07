@@ -6,15 +6,15 @@ const tokenHelper = require("./tokenHelper");
 const { isValid } = require("../../auth/service-users");
 
 // Signup
-router.post("/", (request, response) => {
+router.post("/signup", (request, response) => {
     const credentials = request.body;
     const rounds = process.env.BCRYPT_ROUNDS || 7;
     const hash = bcryptjs.hashSync(credentials.password, rounds);
     credentials.password = hash;
-    const token = tokenHelper.getJwt(credentials)
+    const token = tokenHelper.getJwt(credentials);
     Users.register(credentials)
-        .then(result => {
-            response.status(201).json({ token })
+        .then(userId => {
+            response.status(201).json({ token, userId: userId[0] })
         })
         .catch(error => {
             response.status(500).json({ error: error.message })
@@ -22,7 +22,7 @@ router.post("/", (request, response) => {
 })
 
 // Login
-router.post("/", (request, response) => {
+router.post("/login", (request, response) => {
     const { email, password } = request.body;
     if(isValid(request.body)) {
         Users.findBy({ email: email })
