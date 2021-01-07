@@ -25,7 +25,7 @@ server.use(["/user", "users"], logger, UserRouter);
 server.use(["/auth/user", "/auth/users"], logger, AuthUserRouter);
 server.use("/team", logger, authenticate, validateUser, TeamRouter);
 server.use("/liked", logger, authenticate, validateUser, LikedPokemonRouter);
-server.use("/pokemon_team", logger, authenticate, validateUser, TeamMembersRouter);
+server.use(["/team_member", "/team_members"], logger, authenticate, validateUser, TeamMembersRouter);
 
 server.get("/", (request, response) => {
     response.status(200).json({ Frankenstein: "It's alive!!!!!" });

@@ -7,7 +7,7 @@ router.get("/:userId", (request, response) => {
     const { userId } = request.params;
     Teams.findByUserId(userId)
         .then(team => {
-            response.status(200).json({ teamId: team.id, userId: userId});
+            response.status(200).json({ teamData: team });
         })
         .catch(error => {
             response.status(400).json({ error: error.message })
@@ -16,10 +16,9 @@ router.get("/:userId", (request, response) => {
 
 // Makes a team
 router.post("/", (request, response) => {
-    const { userId } = request.jwt
-    Teams.add(userId)
+    const { userId, teamName } = request.body
+    Teams.add(userId, teamName)
         .then(team => {
-            console.log(team)
             response.status(201).json({ data: {user_Id: userId, team_Id: team[0]} })
         })
         .catch(error => {

@@ -15,9 +15,7 @@ const findByTeamId = team_Id => {
     return db("team_members").where({ team_Id });
 }
 
-const findByUserId = user_Id => {
-    return db("teams").where({ user_Id }).first();
-}
+const findByUserId = user_Id => db("teams").where({ user_Id });
 
 const getPokemonData = team_Id => {
     return db("team_members as TM")

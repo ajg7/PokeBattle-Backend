@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const PokemonTeams = require("./model-team_members");
+const Teams = require("../teams/model-teams");
 
 // Returns all members of a specific team
 router.get("/:teamId", (request, response) => {
@@ -21,30 +22,13 @@ router.get("/:teamId", (request, response) => {
 })
 
 // Add a pokemon to a specific team
-router.post("/:pokemonId", (request, response) => {
-    const { userId } = request.jwt;
-    const { pokemonId } = request.params;
-    PokemonTeams.findByUserId(userId)
-        .then(teams => {
-            PokemonTeams.findByTeamId(teams.id)
-                .then(pokemon => {
-                    PokemonTeams.add(pokemonId, teams.id)
-                        .then(pokemonTeam => {
-                            console.log(pokemonTeam)
-                            PokemonTeams.getPokemonData(pokemonId)
-                                .then(data => {
-                                    response.status(201).json({ id: pokemonTeam[0], team_Id: teams.id, pokemonId: pokemonId, pokemonData: data[0] })
-                                })
-                                .catch(error => {
-                                    console.log(error);
-                                    response.status(500).json({ error: error.message })
-                                })
-                        })
-                        .catch(error => {
-                            console.log(error);
-                            response.status(500).json({ error: error.message })
-                        })
-                })
+router.post("/:teamId", (request, response) => {
+    const { teamId } = request.params;
+    const { pokemonId } = request.body;
+    PokemonTeams.add(pokemonId, teamId)
+        .then(result => {
+            console.log(result[0], "Gi")
+            response.status(201).json({ pokemonId, teamId })
         })
         .catch(error => {
             console.log(error)
