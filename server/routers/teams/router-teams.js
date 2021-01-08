@@ -19,11 +19,29 @@ router.post("/", (request, response) => {
     const { userId, teamName } = request.body
     Teams.add(userId, teamName)
         .then(team => {
+            console.log(team)
             response.status(201).json({ data: {user_Id: userId, team_Id: team[0]} })
         })
         .catch(error => {
             response.status(400).json({ error: error.message })
         })
+})
+
+// Edit team name
+router.put("/:teamId", (request, response) => {
+    const { teamId } = request.params;
+    const body = request.body;
+
+    Teams.update(teamId, body.team_name)
+        .then(change => {
+            console.log(change)
+            response.status(200).json({confirmation: change, newTeamName: body.team_name})
+        })
+        .catch(error => {
+            console.log(error);
+            response.status(500).json({error: error.message})
+        })
+
 })
 
 // Deletes a team

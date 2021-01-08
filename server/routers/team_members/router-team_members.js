@@ -27,7 +27,6 @@ router.post("/:teamId", (request, response) => {
     const { pokemonId } = request.body;
     PokemonTeams.add(pokemonId, teamId)
         .then(result => {
-            console.log(result[0], "Gi")
             response.status(201).json({ pokemonId, teamId })
         })
         .catch(error => {
