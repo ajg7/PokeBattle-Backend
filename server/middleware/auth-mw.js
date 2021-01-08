@@ -3,7 +3,6 @@ const secrets = require("../auth/secrets");
 
 module.exports = (request, response, next) => {
     const token = request.headers.authorization;
-
     if(token) {
         jwt.verify(token, secrets.jwtSecret, (error, decodedToken) => {
             if(error) {

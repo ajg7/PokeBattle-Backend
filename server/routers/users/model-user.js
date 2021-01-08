@@ -1,38 +1,22 @@
+const db = require("../../data/db-config");
+
+const register = newUser => {
+    return db("users").insert(newUser).returning("id");
+};
+
+const findById = id => db("users").where({ id }).first();
+
+const find = () => db("users").where({ id }).first();
+
+const findBy = filter => db("users").where(filter).orderBy("id");
+
+const remove = id => db("users").where({ id }).del();
+
+
 module.exports = {
-    add,
+    register,
+    findById,
     find,
     findBy,
-    findById,
-    update,
     remove
-}
-
-const db = require("../../data/db-config")
-
-function add(newUser) {
-    return db("users").insert(newUser)
-        .then(ids => {
-            const id = ids[0];
-            return findById(id);
-        })
-}
-
-function findBy(filter) {
-    return db("users").where(filter).orderBy("id");
-}
-
-function find() {
-    return db("users")
-}
-
-function findById(id) {
-    return db("users").where({ id }).first();
-}
-
-function update(id, changes) {
-    return db("users").where("id", "=", id).update(changes)
-}
-
-function remove(id) {
-    return db("users").where({ id }).del();
 }

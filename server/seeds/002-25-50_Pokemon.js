@@ -13,7 +13,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png"
   },
   {
     name: "raichu",
@@ -27,7 +30,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/26.png"
   },
   {
     name: "sandshrew",
@@ -41,7 +47,10 @@ exports.seed = function (knex) {
     habitat: "rough-terrain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/27.png"
   },
   {
     name: "sandslash",
@@ -55,7 +64,10 @@ exports.seed = function (knex) {
     habitat: "rough-terrain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/28.png"
   },
   {
     name: "nidoran ♀",
@@ -69,7 +81,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/29.png"
   },
   {
     name: "nidorina",
@@ -83,7 +98,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/30.png"
   },
   {
     name: "nidoqueen",
@@ -97,7 +115,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/31.png"
   },
   {
     name: "nidoran ♂",
@@ -111,7 +132,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/32.png"
   },
   {
     name: "nidorino",
@@ -125,12 +149,15 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/33.png"
   },
   {
     name: "nidoking",
     type1: "poison",
-    type2: null,
+    type2: "ground",
     imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/34.png",
     number: 34,
     height: 14,
@@ -139,7 +166,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/34.png"
   },
   {
     name: "clefairy",
@@ -153,7 +183,10 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png"
   },
   {
     name: "clefable",
@@ -167,7 +200,10 @@ exports.seed = function (knex) {
     habitat: "mountain",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/36.png"
   },
   {
     name: "vulpix",
@@ -181,7 +217,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/37.png"
   },
   {
     name: "ninetales",
@@ -195,7 +234,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/38.png"
   },
   {
     name: "jigglypuff",
@@ -209,7 +251,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/39.png"
   },
   {
     name: "wigglytuff",
@@ -223,7 +268,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/40.png"
   },
   {
     name: "zubat",
@@ -237,7 +285,10 @@ exports.seed = function (knex) {
     habitat: "cave",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/41.png"
   },
   {
     name: "golbat",
@@ -251,7 +302,10 @@ exports.seed = function (knex) {
     habitat: "cave",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/42.png"
   },
   {
     name: "oddish",
@@ -265,7 +319,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/43.png"
   },
   {
     name: "gloom",
@@ -279,7 +336,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/44.png"
   },
   {
     name: "vileplume",
@@ -293,7 +353,10 @@ exports.seed = function (knex) {
     habitat: "grassland",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/45.png"
   },
   {
     name: "paras",
@@ -307,7 +370,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/46.png"
   },
   {
     name: "parasect",
@@ -321,7 +387,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/47.png"
   },
   {
     name: "venonat",
@@ -335,7 +404,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/48.png"
   },
   {
     name: "venomoth",
@@ -349,7 +421,10 @@ exports.seed = function (knex) {
     habitat: "forest",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/49.png"
   },
   {
     name: "diglett",
@@ -363,7 +438,10 @@ exports.seed = function (knex) {
     habitat: "cave",
     legendary: false, 
     mythical: false,
-    ancient: false
+    ancient: false,
+    region: "kanto",
+    modern_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png",
+    shiny_imgURL: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/50.png"
   },
   ]
 

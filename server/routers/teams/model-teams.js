@@ -1,25 +1,19 @@
-module.exports = {
-    find,
-    findById,
-    add,
-    remove
-}
-
 const db = require("../../data/db-config");
 
-function find() {
-    return db("teams")
-}
+const findByUserId = user_Id => db("teams").where({ user_Id });
 
-function findById(id) {
-    return db("teams").where({ id }).first()
-}
+const findByTeamId = id => db("teams").where({ id });
 
-function add(user_Id) {
-    return db("teams").insert({user_Id: user_Id})
-}
+const add = (user_Id, team_name) => db("teams").insert({user_Id: user_Id, team_name: team_name}).returning("id");
 
-function remove(id) {
-    return db("teams").where({ id }).del();
-}
+const remove = id => db("teams").where({ id }).del();
 
+const update = (id, newTeamName) => db("teams").where({ id }).update({team_name: newTeamName});
+
+module.exports = {
+    findByUserId,
+    findByTeamId,
+    add,
+    remove,
+    update
+}

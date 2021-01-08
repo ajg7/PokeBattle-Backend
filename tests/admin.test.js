@@ -1,3 +1,11 @@
+
+/*
+
+Look into Code Coverage (Istanbul)
+
+*/
+
+
 const supertest = require("supertest");
 const server = require("../server/api/server");
 const { missingno, mysteryGhost, skeletonKabutops, skeletonAerodactyl } = require("./classes/pokemonTestObject");
