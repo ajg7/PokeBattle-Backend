@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "../.env" });
 
 module.exports = {
 	development: {
@@ -8,36 +8,36 @@ module.exports = {
 			host: "127.0.0.1",
 			user: "postgres",
 			password: "Romans8:37",
-			database: "pokebattle",
+			database: "PokeBattle",
 			charset: "utf8",
 		},
 		migrations: {
-			directory: "./server/migrations",
+			directory: "./server/db/migrations",
 		},
 		seeds: {
-			directory: "./server/seeds",
+			directory: "./server/db/seeds",
 		},
 	},
 
-	staging: {
-		client: "postgresql",
+	test: {
+		client: "pg",
 		connection: {
-			database: "pokebattle",
+			database: "PokeBattle",
 			user: "postgres",
 			password: "Romans8:37",
 		},
 		migrations: {
-			directory: "./server/migrations",
+			directory: "./server/db/migrations",
 		},
 		seeds: {
-			directory: "./server/seeds",
+			directory: "./server/db/seeds",
 		},
 	},
 
 	production: {
-		client: "postgresql",
+		client: "pg",
 		connection: {
-			database: "pokebattle",
+			database: "PokeBattle",
 			user: "postgres",
 			password: "Romans8:37",
 		},
@@ -46,10 +46,10 @@ module.exports = {
 			max: 10,
 		},
 		migrations: {
-			directory: "./server/migrations",
+			directory: "./server/db/migrations",
 		},
 		seeds: {
-			directory: "./server/seeds",
+			directory: "./server/db/seeds",
 		},
 	},
 };

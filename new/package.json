@@ -8,7 +8,7 @@
     "check": "prettier --check .",
     "server": "nodemon index.js",
     "seeds": "knex seed:run",
-    "latest": "knex migrate:latest",
+    "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback"
   },
   "keywords": [],
