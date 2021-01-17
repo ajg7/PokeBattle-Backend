@@ -1,9 +1,9 @@
-const sendError = (res, error, name = "") => {
+const sendError = (response, error, name = "") => {
 	console.log({ error: error.message });
 	let status, message;
-	if (error.message.includes("NotFound")) {
+	if (error.message.includes("Not Found")) {
 		status = 404;
-		message = `${name}NotFound`;
+		message = `${name}Not Found`;
 	} else if (
 		error.message.includes("Empty .update() call detected!") ||
 		error.message.includes("Undefined binding(s) detected")
@@ -32,7 +32,7 @@ const sendError = (res, error, name = "") => {
 		status = 500;
 		message = error.message;
 	}
-	res.status(status).json({ error: message });
+	response.status(status).json({ error: message });
 };
 
 module.exports = sendError;
