@@ -25,10 +25,26 @@ const getPokemonReverseAlphabetically = () => {
 	return db("pokemon").orderBy("name", "desc");
 };
 
+// Get Pokemon by Legendary, Ancient, or Mythical Status
+const getPokemonByStatus = status => {
+	return db("pokemon").where(`${status}`, "=", true).orderBy("name");
+};
+
+const getPokemonByWeight = weight => {
+	return db("pokemon").orderBy("weight", `${weight}`);
+};
+
+const getPokemonByHeight = height => {
+	return db("pokemon").orderBy("height", `${height}`);
+};
+
 module.exports = {
 	getAllPokemon,
 	getPokemonById,
 	getPokemonByType,
 	getPokemonAlphabetically,
 	getPokemonReverseAlphabetically,
+	getPokemonByStatus,
+	getPokemonByWeight,
+	getPokemonByHeight,
 };

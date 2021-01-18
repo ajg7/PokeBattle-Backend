@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { crudOps } = require("../../library");
 const { sendError } = require("../../library/errorHandler");
-
 const Pokemon = require("./pokemonModel");
 
 router.get("/", (request, response) => {
@@ -41,6 +40,40 @@ router.get("/desc", async (request, response) => {
 		response.status(200).json(data);
 	} catch (error) {
 		sendError(response, error, "Pokemon Sorted Reverse Alphabetically");
+	}
+});
+
+router.get("/status/:status", async (request, response) => {
+	const { status } = request.params;
+	try {
+		const data = await Pokemon.getPokemonByStatus(status);
+		response.status(200).json(data);
+	} catch (error) {
+		sendError(response, error, "Pokemon Sorted By Status");
+	}
+});
+
+// Returns Pokemon Sorted by Weight
+router.get("/weight/:weight", async (request, response) => {
+	// Weight is either asc or desc
+	const { weight } = request.params;
+	try {
+		const data = await Pokemon.getPokemonByWeight(weight);
+		response.status(200).json(data);
+	} catch (error) {
+		sendError(response, error, "Pokemon Sorted By Weight");
+	}
+});
+
+// Returns Pokemon Sorted by Height
+router.get("/height/:height", async (request, response) => {
+	//Height is either asc or desc
+	const { height } = request.params;
+	try {
+		const data = await Pokemon.getPokemonByHeight(height);
+		response.status(200).json(data);
+	} catch (error) {
+		sendError(response, error, "Pokemon Sorted By Height");
 	}
 });
 
