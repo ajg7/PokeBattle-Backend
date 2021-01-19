@@ -8,7 +8,6 @@ const server = express();
 
 // Middleware
 const logger = require("./middleware/logger");
-// const auth = require("./middleware/auth-mw");
 
 server.use(helmet());
 server.use(cors());
