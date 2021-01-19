@@ -40,6 +40,7 @@ const update = async (response, query, name, ...args) => {
 };
 
 const remove = async (response, query, name, ...args) => {
+	console.log(...args, "Look");
 	try {
 		const data = await query(...args);
 		if (!data) throw new Error("Not Found");

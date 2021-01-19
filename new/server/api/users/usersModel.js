@@ -12,11 +12,11 @@ const getById = id => db("users").where({ id }).first();
 const findBy = filter => db("users").where(filter).orderBy("id");
 
 // User can be deleted
-const remove = id => db("users").where({ id }).del();
+const removeUser = id => db("users").where({ id }).del();
 
 module.exports = {
 	register,
 	getById,
 	findBy,
-	remove,
+	removeUser,
 };
