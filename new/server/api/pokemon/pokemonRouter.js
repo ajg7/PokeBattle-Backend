@@ -54,11 +54,11 @@ router.get("/status/:status", async (request, response) => {
 });
 
 // Returns Pokemon Sorted by Weight
-router.get("/weight/:weight", async (request, response) => {
+router.get("/weight/:order", async (request, response) => {
 	// Weight is either asc or desc
-	const { weight } = request.params;
+	const { order } = request.params;
 	try {
-		const data = await Pokemon.getPokemonByWeight(weight);
+		const data = await Pokemon.getPokemonByWeight(order);
 		response.status(200).json(data);
 	} catch (error) {
 		sendError(response, error, "Pokemon Sorted By Weight");
@@ -66,11 +66,11 @@ router.get("/weight/:weight", async (request, response) => {
 });
 
 // Returns Pokemon Sorted by Height
-router.get("/height/:height", async (request, response) => {
+router.get("/height/:order", async (request, response) => {
 	//Height is either asc or desc
-	const { height } = request.params;
+	const { order } = request.params;
 	try {
-		const data = await Pokemon.getPokemonByHeight(height);
+		const data = await Pokemon.getPokemonByHeight(order);
 		response.status(200).json(data);
 	} catch (error) {
 		sendError(response, error, "Pokemon Sorted By Height");

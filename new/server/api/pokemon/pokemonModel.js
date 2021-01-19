@@ -30,12 +30,14 @@ const getPokemonByStatus = status => {
 	return db("pokemon").where(`${status}`, "=", true).orderBy("name");
 };
 
-const getPokemonByWeight = weight => {
-	return db("pokemon").orderBy("weight", `${weight}`);
+// Order Pokemon by their Weight
+const getPokemonByWeight = order => {
+	return db("pokemon").orderBy("weight", `${order}`);
 };
 
-const getPokemonByHeight = height => {
-	return db("pokemon").orderBy("height", `${height}`);
+// Order Pokemon by their Height
+const getPokemonByHeight = order => {
+	return db("pokemon").orderBy("height", `${order}`);
 };
 
 module.exports = {
