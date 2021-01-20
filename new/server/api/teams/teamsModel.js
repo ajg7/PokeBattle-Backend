@@ -13,7 +13,7 @@ const makeTeam = (user_Id, team_name) => {
 };
 
 const updateTeamName = (id, team_name) => {
-	return db("teams").where({ id }).update(team_name);
+	return db("teams").where({ id }).update({ team_name: team_name });
 };
 
 const removeTeam = id => {

@@ -31,11 +31,11 @@ const add = async (response, query, name, ...args) => {
 const update = async (response, query, name, ...args) => {
 	try {
 		const data = await query(...args);
-		console.log(data);
 		if (!data) throw new Error("Not Found");
-		response.status(204).end();
+		response.status(204).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		// sendError(response, error, name);
+		console.log(error);
 	}
 };
 
