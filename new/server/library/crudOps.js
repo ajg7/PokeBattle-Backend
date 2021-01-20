@@ -13,7 +13,7 @@ const getById = async (response, query, name, ...args) => {
 	try {
 		const data = await query(...args);
 		if (!data) throw new Error("Not Found");
-		response.status(200).json(data[0]);
+		response.status(200).json(data);
 	} catch (error) {
 		sendError(response, error, name);
 	}
@@ -40,7 +40,6 @@ const update = async (response, query, name, ...args) => {
 };
 
 const remove = async (response, query, name, ...args) => {
-	console.log(...args, "Look");
 	try {
 		const data = await query(...args);
 		if (!data) throw new Error("Not Found");
