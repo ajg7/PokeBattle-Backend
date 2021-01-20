@@ -4,6 +4,7 @@ const cors = require("cors");
 const PokemonRouter = require("./pokemon/pokemonRouter");
 const UserRouter = require("./users/usersRouter");
 const TeamRouter = require("./teams/teamsRouter");
+const TeamMembersRouter = require("./team_members/teamMembersRouter");
 
 const server = express();
 
@@ -17,6 +18,7 @@ server.use(express.json());
 server.use("/pokemon", logger, PokemonRouter);
 server.use(["/user", "/users"], logger, UserRouter);
 server.use(["/team", "/teams"], logger, auth, TeamRouter);
+server.use(["/team_member", "/team_members"], logger, auth, TeamMembersRouter);
 
 server.get("/", (request, response) => {
 	response.status(200).json({ Frankenstein: "It's alive!!!!!", timeStamp: Date.now() });

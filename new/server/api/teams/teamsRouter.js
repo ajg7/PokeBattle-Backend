@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { crudOps } = require("../../library");
-// const { sendError } = require("../../library/errorHandler");
 const Teams = require("./teamsModel");
 
 router.get("/:id", (request, response) => {

@@ -34,7 +34,8 @@ const update = async (response, query, name, ...args) => {
 		if (!data) throw new Error("Not Found");
 		response.status(204).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		// sendError(response, error, name);
+		console.log(error);
 	}
 };
 
