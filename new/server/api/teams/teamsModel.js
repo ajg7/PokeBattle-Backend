@@ -4,7 +4,7 @@ const getTeamById = id => {
 	return db("teams").where({ id });
 };
 
-const getTeamsByUserId = async user_Id => {
+const getTeamsByUserId = user_Id => {
 	return db("teams").where({ user_Id });
 };
 
