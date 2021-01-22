@@ -36,7 +36,8 @@ router.get("/data/:teamId", async (request, response) => {
 	const { teamId } = request.params;
 	try {
 		const data = await TeamMembers.getPokemonData(teamId);
-		response.status(200).json(data);
+		const entries = Array.from(data.entries());
+		response.status(200).json(entries);
 	} catch (error) {
 		sendError(response, error, "Get Pokemon Data for a Team");
 	}

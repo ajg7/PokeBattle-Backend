@@ -20,14 +20,18 @@ const getPokemonData = async user_Id => {
 	const resultQuery = await db("teams as T")
 		.leftJoin("team_members as TM", "TM.team_Id", "=", "T.id")
 		.leftJoin("pokemon as P", "P.id", "=", "TM.pokemon_Id")
-		.where({ user_Id });
+		.where({ user_Id })
+		.select("T.id as team_Id", "TM.pokemon_Id", "P.name", "P.imgURL", "T.team_name");
+	console.log(resultQuery, "dark");
 	for (const pokemon of resultQuery) {
-		if (map.get(pokemon.team_Id) === undefined) {
-			map.set(pokemon.team_Id, []);
+		if (map.get(pokemon.team_name) === undefined) {
+			map.set(pokemon.team_name, []);
 		}
-		map.get(pokemon.team_Id).push(pokemon);
-	}
 
+		if (pokemon.id !== null) {
+			map.get(pokemon.team_name).push(pokemon);
+		}
+	}
 	console.log(map);
 	return map;
 };
