@@ -7,14 +7,19 @@ router.get("/", (request, response) => {
 	crudOps.getAll(response, Pokemon.getAllPokemon, "Pokemon");
 });
 
-router.get("/:id", (request, response) => {
-	const { id } = request.params;
-	crudOps.getById(response, Pokemon.getPokemonById, "Specific Pokemon", id);
+router.get("/search", async (request, response) => {
+	const { pokemon } = request.query;
+	try {
+		const data = await Pokemon.getPokemonByName(pokemon);
+		response.status(200).json(data);
+	} catch (error) {
+		response.status(404).json({ message: "Invalid entry" });
+	}
 });
 
 // Returns Pokemon by their Type
-router.get("/type/:type", async (request, response) => {
-	const { type } = request.params;
+router.get("/search/type", async (request, response) => {
+	const { type } = request.query;
 	try {
 		const data = await Pokemon.getPokemonByType(type);
 		response.status(200).json(data);
@@ -43,8 +48,8 @@ router.get("/desc", async (request, response) => {
 	}
 });
 
-router.get("/status/:status", async (request, response) => {
-	const { status } = request.params;
+router.get("/status", async (request, response) => {
+	const { status } = request.query;
 	try {
 		const data = await Pokemon.getPokemonByStatus(status);
 		response.status(200).json(data);
@@ -54,9 +59,12 @@ router.get("/status/:status", async (request, response) => {
 });
 
 // Returns Pokemon Sorted by Weight
-router.get("/weight/:order", async (request, response) => {
+router.get("/weight", async (request, response) => {
 	// Weight is either asc or desc
-	const { order } = request.params;
+	const { weight } = request.query;
+	let order;
+	weight === "lightest" ? (order = "asc") : (order = "desc");
+	console.log(request.query, order);
 	try {
 		const data = await Pokemon.getPokemonByWeight(order);
 		response.status(200).json(data);
@@ -66,9 +74,11 @@ router.get("/weight/:order", async (request, response) => {
 });
 
 // Returns Pokemon Sorted by Height
-router.get("/height/:order", async (request, response) => {
+router.get("/height", async (request, response) => {
 	//Height is either asc or desc
-	const { order } = request.params;
+	const { height } = request.query;
+	let order;
+	height === "shortest" ? (order = "asc") : (order = "desc");
 	try {
 		const data = await Pokemon.getPokemonByHeight(order);
 		response.status(200).json(data);

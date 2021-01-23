@@ -10,9 +10,21 @@ const getPokemonById = id => {
 	return db("pokemon").where({ id });
 };
 
+// Get Pokemon by Their Name
+const getPokemonByName = async pokemonName => {
+	const result = await db("pokemon").where("name", "=", pokemonName);
+	console.log(result);
+	return result;
+};
+
 // Get Pokemon by their type
-const getPokemonByType = type => {
-	return db("pokemon").where({ type1: type }).orWhere({ type2: type }).orderBy("name");
+const getPokemonByType = async type => {
+	const result = await db("pokemon")
+		.where("type1", "=", type)
+		.orWhere("type2", "=", type)
+		.orderBy("name");
+	console.log(result);
+	return result;
 };
 
 // Get Pokemon in A - Z ordering
@@ -43,6 +55,7 @@ const getPokemonByHeight = order => {
 module.exports = {
 	getAllPokemon,
 	getPokemonById,
+	getPokemonByName,
 	getPokemonByType,
 	getPokemonAlphabetically,
 	getPokemonReverseAlphabetically,

@@ -21,8 +21,14 @@ const getPokemonData = async user_Id => {
 		.leftJoin("team_members as TM", "TM.team_Id", "=", "T.id")
 		.leftJoin("pokemon as P", "P.id", "=", "TM.pokemon_Id")
 		.where({ user_Id })
-		.select("T.id as team_Id", "TM.pokemon_Id", "P.name", "P.imgURL", "T.team_name");
-	console.log(resultQuery, "dark");
+		.select(
+			"T.id as team_Id",
+			"TM.pokemon_Id",
+			"P.name",
+			"P.imgURL",
+			"T.team_name",
+			"TM.nickname"
+		);
 	for (const pokemon of resultQuery) {
 		if (map.get(pokemon.team_name) === undefined) {
 			map.set(pokemon.team_name, []);
@@ -32,8 +38,22 @@ const getPokemonData = async user_Id => {
 			map.get(pokemon.team_name).push(pokemon);
 		}
 	}
-	console.log(map);
 	return map;
+};
+
+const getPokemonInTeam = async team_Id => {
+	return db("team_members as TM")
+		.join("pokemon as P", "P.id", "=", "TM.pokemon_Id")
+		.where({ team_Id })
+		.select(
+			"TM.pokemon_Id",
+			"P.name",
+			"TM.nickname",
+			"P.type1",
+			"P.type2",
+			"P.imgURL",
+			"P.number"
+		);
 };
 
 module.exports = {
@@ -41,4 +61,5 @@ module.exports = {
 	removePokemonInTeam,
 	updateNickName,
 	getPokemonData,
+	getPokemonInTeam,
 };

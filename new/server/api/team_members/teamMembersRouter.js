@@ -9,9 +9,8 @@ router.post("/:pokemonId", (request, response) => {
 	crudOps.add(response, TeamMembers.addPokemonToTeam, "Add Pokemon to a Team", teamId, pokemonId);
 });
 
-router.delete("/removePokemon/:pokemonId", (request, response) => {
-	const { pokemonId } = request.params;
-	const { teamId } = request.body;
+router.delete("/removePokemon/:teamId/:pokemonId", (request, response) => {
+	const { pokemonId, teamId } = request.params;
 	crudOps.remove(
 		response,
 		TeamMembers.removePokemonInTeam,
@@ -40,6 +39,16 @@ router.get("/data/:teamId", async (request, response) => {
 		response.status(200).json(entries);
 	} catch (error) {
 		sendError(response, error, "Get Pokemon Data for a Team");
+	}
+});
+
+router.get("/getPokemon/:teamId", async (request, response) => {
+	const { teamId } = request.params;
+	try {
+		const data = await TeamMembers.getPokemonInTeam(teamId);
+		response.status(200).json(data);
+	} catch (error) {
+		sendError(response, error, "Get Pokemon Data for Current Team");
 	}
 });
 
