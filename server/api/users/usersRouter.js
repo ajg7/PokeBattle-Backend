@@ -36,7 +36,7 @@ router.post("/signup", (request, response) => {
 			response.status(201).json({ token, userId: userId[0] });
 		})
 		.catch(error => {
-			sendError(response, error, "Signup");
+			response.status(409).json(error.message);
 		});
 });
 
@@ -46,6 +46,15 @@ router.delete("/removeUser/:id", async (request, response) => {
 	const data = await Users.removeUser(id);
 	if (data) response.status(200).json(data);
 	else sendError(response, new Error(), "Delete Account");
+});
+
+// Update Points
+router.put("/points/:id", async (request, response) => {
+	const { id } = request.params;
+	const { points } = request.body;
+	const data = await Users.updatePoints(id, points);
+	if (data) response.status(204).json(data[0]);
+	else sendError(response, new Error(), "Update Points");
 });
 
 module.exports = router;
