@@ -53,8 +53,19 @@ router.put("/points/:id", async (request, response) => {
 	const { id } = request.params;
 	const { points } = request.body;
 	const data = await Users.updatePoints(id, points);
-	if (data) response.status(204).json(data[0]);
+	if (data) response.status(204).end();
 	else sendError(response, new Error(), "Update Points");
+});
+
+// Get Total Points
+router.get("/points/:id", async (request, response) => {
+	const { id } = request.params;
+	const data = await Users.getTotalPoints(id);
+	try {
+		response.status(200).json(data[0]);
+	} catch (error) {
+		sendError(response, error, "Get Total Points");
+	}
 });
 
 module.exports = router;

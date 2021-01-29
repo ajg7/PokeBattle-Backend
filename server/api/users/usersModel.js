@@ -15,8 +15,13 @@ const findBy = filter => db("users").where(filter).orderBy("id");
 const removeUser = id => db("users").where({ id }).del();
 
 // User can record their score on "Who's that pokemon?"
-const updatePoints = (id, points) =>
-	db("users").where({ id }).update({ total_points: points }).returning("total_points");
+const updatePoints = (id, points) => {
+	return db("users").where({ id }).update({ total_points: points });
+};
+
+const getTotalPoints = id => {
+	return db("users").where({ id }).select("total_points");
+};
 
 module.exports = {
 	register,
@@ -24,4 +29,5 @@ module.exports = {
 	findBy,
 	removeUser,
 	updatePoints,
+	getTotalPoints,
 };
