@@ -52,6 +52,11 @@ const getPokemonByHeight = order => {
 	return db("pokemon").orderBy("height", `${order}`);
 };
 
+// Order Pokemon by their Habitat
+const getPokemonByHabitat = habitat => {
+	return db("pokemon as P").where({ habitat }).orderBy("P.name");
+};
+
 module.exports = {
 	getAllPokemon,
 	getPokemonById,
@@ -62,4 +67,5 @@ module.exports = {
 	getPokemonByStatus,
 	getPokemonByWeight,
 	getPokemonByHeight,
+	getPokemonByHabitat,
 };

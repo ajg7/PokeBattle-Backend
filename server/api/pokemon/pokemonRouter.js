@@ -87,4 +87,15 @@ router.get("/height", async (request, response) => {
 	}
 });
 
+// Returns Pokemon Sorted by Habitat
+router.get("/habitat", async (request, response) => {
+	const { habitat } = request.query;
+	try {
+		const data = await Pokemon.getPokemonByHabitat(habitat);
+		response.status(200).json(data);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 module.exports = router;
