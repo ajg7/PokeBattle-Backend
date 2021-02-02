@@ -158,7 +158,7 @@ exports.seed = function (knex) {
 			weight: 190,
 			entry:
 				"Very protective of its territory. It will bark and bite to repel intruders from its space.",
-			habitat: "grasland",
+			habitat: "grassland",
 			legendary: false,
 			mythical: false,
 			ancient: false,
