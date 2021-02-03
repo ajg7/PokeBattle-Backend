@@ -94,7 +94,7 @@ router.get("/habitat", async (request, response) => {
 		const data = await Pokemon.getPokemonByHabitat(habitat);
 		response.status(200).json(data);
 	} catch (error) {
-		console.log(error);
+		sendError(response, error, "Pokemon Sorted By Habitat");
 	}
 });
 
