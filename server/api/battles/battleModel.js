@@ -5,7 +5,9 @@ const getAllTypes = () => {
 };
 
 const makeABattle = (user_Id, team_Id, player_score, challenger_score) => {
-	return db("battles").insert({ user_Id, team_Id, player_score, challenger_score }).returning("id");
+	return db("battles")
+		.insert({ user_Id, team_Id, player_score, challenger_score })
+		.returning("id");
 };
 
 const updateScores = (id, scores) => {
@@ -19,8 +21,7 @@ const getScoresByUserId = user_Id => {
 };
 
 const getScoresByTeamId = team_Id => {
-	return db("battles")
-		.where({ team_Id});
+	return db("battles").where({ team_Id });
 };
 
 module.exports = {
@@ -28,5 +29,5 @@ module.exports = {
 	makeABattle,
 	updateScores,
 	getScoresByUserId,
-	getScoresByTeamId
+	getScoresByTeamId,
 };

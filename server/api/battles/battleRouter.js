@@ -47,8 +47,7 @@ router.get("/battles/:teamId", async (request, response) => {
 	try {
 		const data = await Battle.getScoresByTeamId(teamId);
 		response.status(200).json(data);
-	}
-	catch (error) {
+	} catch (error) {
 		sendError(response, error, "Get Scores By Team Id");
 	}
 });
