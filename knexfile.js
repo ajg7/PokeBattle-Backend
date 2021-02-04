@@ -36,11 +36,7 @@ module.exports = {
 
 	production: {
 		client: "pg",
-		connection: {
-			database: "PokeBattle",
-			user: "postgres",
-			password: "Romans8:37",
-		},
+		connection: process.env.DATABASE,
 		pool: {
 			min: 2,
 			max: 10,
