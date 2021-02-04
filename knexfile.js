@@ -47,6 +47,6 @@ module.exports = {
 		seeds: {
 			directory: "./server/db/seeds",
 		},
-		sl: true
+		ssl: true
 	},
 };
