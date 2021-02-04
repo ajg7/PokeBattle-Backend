@@ -10,7 +10,8 @@
     "seeds": "knex seed:run",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "jest": {
     "testEnvironment": "node"
