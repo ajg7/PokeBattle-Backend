@@ -36,7 +36,7 @@ module.exports = {
 
 	production: {
 		client: "pg",
-		connection: "postgres://ezpituunmbeqlt:da877acbb16576366bae149e60b30558625265bc966b4466cba91190900ee8ff@ec2-3-222-11-129.compute-1.amazonaws.com:5432/dd1utp5m233280",
+		connection: process.env.DATABASE_URL,
 		pool: {
 			min: 2,
 			max: 10,
