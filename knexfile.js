@@ -4,13 +4,7 @@ dotenv.config();
 module.exports = {
 	development: {
 		client: "pg",
-		connection: {
-			host: "127.0.0.1",
-			user: "postgres",
-			password: "Romans8:37",
-			database: "PokeBattle",
-			charset: "utf8",
-		},
+		connection: process.env.DATABASE_URL,
 		migrations: {
 			directory: "./server/db/migrations",
 		},
@@ -21,11 +15,7 @@ module.exports = {
 
 	test: {
 		client: "pg",
-		connection: {
-			database: "PokeBattle",
-			user: "postgres",
-			password: "Romans8:37",
-		},
+		connection: process.env.DATABASE_URL,
 		migrations: {
 			directory: "./server/db/migrations",
 		},

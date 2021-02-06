@@ -20,7 +20,7 @@ server.use("/pokemon", logger, PokemonRouter);
 server.use(["/user", "/users"], logger, UserRouter);
 server.use(["/team", "/teams"], logger, auth, TeamRouter);
 server.use(["/team_member", "/team_members"], logger, auth, TeamMembersRouter);
-server.use(["/battle"], logger, auth, BattleRouter);
+server.use(["/battle", "/battles"], logger, auth, BattleRouter);
 
 server.get("/", (request, response) => {
 	response.status(200).json({ Frankenstein: "It's alive!!!!!", timeStamp: Date.now() });
