@@ -5,8 +5,7 @@ const Pokemon = require("./pokemonModel");
 router.get("/", async (request, response) => {
 	try {
 		crudOps.getAll(response, Pokemon.getAllPokemon);
-	}
-	catch (error) {
+	} catch (error) {
 		response.status(500).json(error.message);
 	}
 });
@@ -68,7 +67,6 @@ router.get("/weight", async (request, response) => {
 	const { weight } = request.query;
 	let order;
 	weight === "lightest" ? (order = "asc") : (order = "desc");
-	console.log(request.query, order);
 	try {
 		const data = await Pokemon.getPokemonByWeight(order);
 		response.status(200).json(data);

@@ -2,21 +2,23 @@ const router = require("express").Router();
 const { crudOps } = require("../../library");
 const TeamMembers = require("./teamMembersModel");
 
-router.post("/:pokemonId", (request, response) => {
+router.post("/:pokemonId", async (request, response) => {
 	const { teamId } = request.body;
 	const { pokemonId } = request.params;
-	crudOps.add(response, TeamMembers.addPokemonToTeam, "Add Pokemon to a Team", teamId, pokemonId);
+	try {
+		await crudOps.add(response, TeamMembers.addPokemonToTeam, teamId, pokemonId);
+	} catch (error) {
+		response.status(500).json(error);
+	}
 });
 
-router.delete("/removePokemon/:teamId/:pokemonId", (request, response) => {
+router.delete("/removePokemon/:teamId/:pokemonId", async (request, response) => {
 	const { pokemonId, teamId } = request.params;
-	crudOps.remove(
-		response,
-		TeamMembers.removePokemonInTeam,
-		"Remove a Pokemon From Team",
-		teamId,
-		pokemonId
-	);
+	try {
+		await crudOps.remove(response, TeamMembers.removePokemonInTeam, teamId, pokemonId);
+	} catch (error) {
+		response.status(500).json(error.message);
+	}
 });
 
 router.put("/nickname/:pokemonId", async (request, response) => {

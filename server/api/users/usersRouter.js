@@ -42,7 +42,6 @@ router.post("/signup", (request, response) => {
 // Delete Account
 router.delete("/removeUser/:id", async (request, response) => {
 	const { id } = request.params;
-
 	try {
 		const data = await Users.removeUser(id);
 		response.status(200).json(data);
