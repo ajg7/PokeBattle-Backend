@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { crudOps } = require("../../library");
-const sendError = require("../../library/errorHandler");
 const TeamMembers = require("./teamMembersModel");
 
 router.post("/:pokemonId", (request, response) => {
@@ -27,7 +26,7 @@ router.put("/nickname/:pokemonId", async (request, response) => {
 		await TeamMembers.updateNickName(teamId, pokemonId, nickname);
 		response.status(204).end();
 	} catch (error) {
-		sendError(response, error, "Edit Nickname");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -38,7 +37,7 @@ router.get("/data/:teamId", async (request, response) => {
 		const entries = Array.from(data.entries());
 		response.status(200).json(entries);
 	} catch (error) {
-		sendError(response, error, "Get Pokemon Data for a Team");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -48,7 +47,7 @@ router.get("/getPokemon/:teamId", async (request, response) => {
 		const data = await TeamMembers.getPokemonInTeam(teamId);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Get Pokemon Data for Current Team");
+		response.status(500).json(error.message);
 	}
 });
 

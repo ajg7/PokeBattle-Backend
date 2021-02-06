@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { sendError } = require("../../library");
 const Battle = require("./battleModel");
 
 router.get("/types", async (request, response) => {
@@ -7,7 +6,7 @@ router.get("/types", async (request, response) => {
 		const types = await Battle.getAllTypes();
 		response.status(200).json(types);
 	} catch (error) {
-		sendError(response, error, "All Pokemon Types");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -17,7 +16,7 @@ router.post("/", async (request, response) => {
 		const battleId = await Battle.makeABattle(userId, teamId, playerScore, challengerScore);
 		response.status(201).json(battleId);
 	} catch (error) {
-		sendError(response, error, "Make a Battle");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -28,7 +27,7 @@ router.put("/:id", async (request, response) => {
 		const battleId = await Battle.updateScores(id, scores);
 		response.status(204).json(battleId);
 	} catch (error) {
-		sendError(response, error, "Update Scores");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -38,7 +37,7 @@ router.get("/user", async (request, response) => {
 		const scores = await Battle.getScoresByUserId(userId);
 		response.status(200).json(scores);
 	} catch (error) {
-		sendError(response, error, "Get Scores");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -48,7 +47,7 @@ router.get("/battles/:teamId", async (request, response) => {
 		const data = await Battle.getScoresByTeamId(teamId);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Get Scores By Team Id");
+		response.status(500).json(error.message);
 	}
 });
 

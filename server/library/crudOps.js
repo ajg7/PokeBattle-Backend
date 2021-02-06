@@ -1,11 +1,9 @@
-const { sendError } = require("./errorHandler");
-
 const getAll = async (response, query, name, ...args) => {
 	try {
 		const data = await query(...args);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		response.status(500).json(error.message);
 	}
 };
 
@@ -14,7 +12,7 @@ const getById = async (response, query, name, ...args) => {
 		const data = await query(...args);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		response.status(404).json(error.message);
 	}
 };
 
@@ -23,7 +21,7 @@ const add = async (response, query, name, ...args) => {
 		const data = await query(...args);
 		response.status(201).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		response.status(500).json(error.message);
 	}
 };
 
@@ -33,8 +31,7 @@ const update = async (response, query, name, ...args) => {
 		if (!data) throw new Error("Not Found");
 		response.status(204).json(data);
 	} catch (error) {
-		// sendError(response, error, name);
-		console.log(error);
+		response.status(404).json(error.message);
 	}
 };
 
@@ -44,7 +41,7 @@ const remove = async (response, query, name, ...args) => {
 		if (!data) throw new Error("Not Found");
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, name);
+		response.status(404).json(error.message);
 	}
 };
 

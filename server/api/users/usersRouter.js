@@ -2,7 +2,6 @@ const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 const { isValid } = require("../../library/isValidChecker");
 const tokenHelper = require("../../library/tokenHelper");
-const { sendError } = require("../../library/errorHandler");
 const Users = require("./usersModel");
 
 // Login
@@ -18,7 +17,7 @@ router.post("/login", (request, response) => {
 					response.status(400).json({ message: "Invalid Characters" });
 				}
 			})
-			.catch(error => sendError(response, error, "Login"));
+			.catch(error => response.status(500).json(error.message));
 	} else {
 		response.status(400).json({ message: "Please Provide Email and Password" });
 	}
@@ -43,28 +42,35 @@ router.post("/signup", (request, response) => {
 // Delete Account
 router.delete("/removeUser/:id", async (request, response) => {
 	const { id } = request.params;
-	const data = await Users.removeUser(id);
-	if (data) response.status(200).json(data);
-	else sendError(response, new Error(), "Delete Account");
+
+	try {
+		const data = await Users.removeUser(id);
+		response.status(200).json(data);
+	} catch (error) {
+		response.status(500).json(error.message);
+	}
 });
 
 // Update Points
 router.put("/points/:id", async (request, response) => {
 	const { id } = request.params;
 	const { points } = request.body;
-	const data = await Users.updatePoints(id, points);
-	if (data) response.status(204).end();
-	else sendError(response, new Error(), "Update Points");
+	try {
+		const data = await Users.updatePoints(id, points);
+		response.status(204).end();
+	} catch (error) {
+		response.status(500).json(error.message);
+	}
 });
 
 // Get Total Points
 router.get("/points/:id", async (request, response) => {
 	const { id } = request.params;
-	const data = await Users.getTotalPoints(id);
 	try {
+		const data = await Users.getTotalPoints(id);
 		response.status(200).json(data[0]);
 	} catch (error) {
-		sendError(response, error, "Get Total Points");
+		response.status(500).json(error.message);
 	}
 });
 

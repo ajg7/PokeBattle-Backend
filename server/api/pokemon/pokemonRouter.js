@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { crudOps } = require("../../library");
-const { sendError } = require("../../library/errorHandler");
 const Pokemon = require("./pokemonModel");
 
 router.get("/", (request, response) => {
@@ -24,7 +23,7 @@ router.get("/search/type", async (request, response) => {
 		const data = await Pokemon.getPokemonByType(type);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon By Type");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -34,7 +33,7 @@ router.get("/asc", async (request, response) => {
 		const data = await Pokemon.getPokemonAlphabetically();
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted Alphabetically");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -44,7 +43,7 @@ router.get("/desc", async (request, response) => {
 		const data = await Pokemon.getPokemonReverseAlphabetically();
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted Reverse Alphabetically");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -54,7 +53,7 @@ router.get("/status", async (request, response) => {
 		const data = await Pokemon.getPokemonByStatus(status);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted By Status");
+		response.status(500).json(error.message);
 	}
 });
 
