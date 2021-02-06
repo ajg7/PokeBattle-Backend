@@ -35,7 +35,7 @@ router.post("/signup", (request, response) => {
 			response.status(201).json({ token, userId: userId[0] });
 		})
 		.catch(error => {
-			response.status(409).json(error.message);
+			response.status(409).json({ error: error.message });
 		});
 });
 
@@ -46,7 +46,7 @@ router.delete("/removeUser/:id", async (request, response) => {
 		const data = await Users.removeUser(id);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -58,7 +58,7 @@ router.put("/points/:id", async (request, response) => {
 		await Users.updatePoints(id, points);
 		response.status(204).end();
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -69,7 +69,7 @@ router.get("/points/:id", async (request, response) => {
 		const data = await Users.getTotalPoints(id);
 		response.status(200).json(data[0]);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 

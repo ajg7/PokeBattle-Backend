@@ -6,7 +6,7 @@ router.get("/types", async (request, response) => {
 		const types = await Battle.getAllTypes();
 		response.status(200).json(types);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -16,7 +16,7 @@ router.post("/", async (request, response) => {
 		const battleId = await Battle.makeABattle(userId, teamId, playerScore, challengerScore);
 		response.status(201).json(battleId);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -27,7 +27,7 @@ router.put("/:id", async (request, response) => {
 		const battleId = await Battle.updateScores(id, scores);
 		response.status(204).json(battleId);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -37,7 +37,7 @@ router.get("/user", async (request, response) => {
 		const scores = await Battle.getScoresByUserId(userId);
 		response.status(200).json(scores);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -47,7 +47,7 @@ router.get("/battles/:teamId", async (request, response) => {
 		const data = await Battle.getScoresByTeamId(teamId);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 

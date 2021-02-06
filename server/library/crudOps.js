@@ -37,7 +37,6 @@ const update = async (response, query, ...args) => {
 const remove = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
-		if (!data) throw new Error("Not Found");
 		response.status(200).json(data);
 	} catch (error) {
 		response.status(404).json(error.message);

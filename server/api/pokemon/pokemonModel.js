@@ -11,20 +11,13 @@ const getPokemonById = id => {
 };
 
 // Get Pokemon by Their Name
-const getPokemonByName = async pokemonName => {
-	const result = await db("pokemon").where("name", "=", pokemonName);
-	console.log(result);
-	return result;
+const getPokemonByName = pokemonName => {
+	return db("pokemon").where("name", "=", pokemonName);
 };
 
 // Get Pokemon by their type
-const getPokemonByType = async type => {
-	const result = await db("pokemon")
-		.where("type1", "=", type)
-		.orWhere("type2", "=", type)
-		.orderBy("name");
-	console.log(result);
-	return result;
+const getPokemonByType = type => {
+	return db("pokemon").where("type1", "=", type).orWhere("type2", "=", type).orderBy("name");
 };
 
 // Get Pokemon in A - Z ordering
