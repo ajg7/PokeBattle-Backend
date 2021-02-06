@@ -121,3 +121,7 @@ teams.sql
 team_members.sql
 pokemon.sql
 battles.sql
+
+server.crt
+server.csr
+server.key

@@ -36,7 +36,13 @@ module.exports = {
 
 	production: {
 		client: "pg",
-		connection: `${process.env.DATABASE_URL}?ssl=true`,
+		connection: {
+			host: "127.0.0.1",
+			user: "postgres",
+			password: "Romans8:37",
+			database: "PokeBattle",
+			charset: "utf8",
+		},
 		sslmode: require,
 		pool: {
 			min: 2,
