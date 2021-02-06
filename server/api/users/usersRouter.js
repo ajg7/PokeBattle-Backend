@@ -56,7 +56,7 @@ router.put("/points/:id", async (request, response) => {
 	const { id } = request.params;
 	const { points } = request.body;
 	try {
-		const data = await Users.updatePoints(id, points);
+		await Users.updatePoints(id, points);
 		response.status(204).end();
 	} catch (error) {
 		response.status(500).json(error.message);

@@ -3,7 +3,7 @@ const { crudOps } = require("../../library");
 const Pokemon = require("./pokemonModel");
 
 router.get("/", (request, response) => {
-	crudOps.getAll(response, Pokemon.getAllPokemon, "Pokemon");
+	crudOps.getAll(response, Pokemon.getAllPokemon);
 });
 
 router.get("/search", async (request, response) => {

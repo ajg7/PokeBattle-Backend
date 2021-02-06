@@ -1,4 +1,4 @@
-const getAll = async (response, query, name, ...args) => {
+const getAll = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
 		response.status(200).json(data);
@@ -7,7 +7,7 @@ const getAll = async (response, query, name, ...args) => {
 	}
 };
 
-const getById = async (response, query, name, ...args) => {
+const getById = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
 		response.status(200).json(data);
@@ -16,7 +16,7 @@ const getById = async (response, query, name, ...args) => {
 	}
 };
 
-const add = async (response, query, name, ...args) => {
+const add = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
 		response.status(201).json(data);
@@ -25,7 +25,7 @@ const add = async (response, query, name, ...args) => {
 	}
 };
 
-const update = async (response, query, name, ...args) => {
+const update = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
 		if (!data) throw new Error("Not Found");
@@ -35,7 +35,7 @@ const update = async (response, query, name, ...args) => {
 	}
 };
 
-const remove = async (response, query, name, ...args) => {
+const remove = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
 		if (!data) throw new Error("Not Found");

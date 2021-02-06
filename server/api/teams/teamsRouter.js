@@ -4,28 +4,28 @@ const Teams = require("./teamsModel");
 
 router.get("/:id", (request, response) => {
 	const { id } = request.params;
-	crudOps.getById(response, Teams.getTeamById, "Team By Id", id);
+	crudOps.getById(response, Teams.getTeamById, id);
 });
 
 router.get("/user/:userId", (request, response) => {
 	const { userId } = request.params;
-	crudOps.getById(response, Teams.getTeamsByUserId, "Teams By User Id", userId);
+	crudOps.getById(response, Teams.getTeamsByUserId, userId);
 });
 
 router.post("/", (request, response) => {
 	const { userId, teamName } = request.body;
-	crudOps.add(response, Teams.makeTeam, "Make a New Team", userId, teamName);
+	crudOps.add(response, Teams.makeTeam, userId, teamName);
 });
 
 router.put("/:id", (request, response) => {
 	const { teamName } = request.body;
 	const { id } = request.params;
-	crudOps.update(response, Teams.updateTeamName, "Edit Team Name", id, teamName);
+	crudOps.update(response, Teams.updateTeamName, id, teamName);
 });
 
 router.delete("/:id", (request, response) => {
 	const { id } = request.params;
-	crudOps.remove(response, Teams.removeTeam, "Delete a Team", id);
+	crudOps.remove(response, Teams.removeTeam, id);
 });
 
 module.exports = router;
