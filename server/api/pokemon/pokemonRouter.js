@@ -68,7 +68,7 @@ router.get("/weight", async (request, response) => {
 		const data = await Pokemon.getPokemonByWeight(order);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted By Weight");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -82,7 +82,7 @@ router.get("/height", async (request, response) => {
 		const data = await Pokemon.getPokemonByHeight(order);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted By Height");
+		response.status(500).json(error.message);
 	}
 });
 
@@ -93,7 +93,7 @@ router.get("/habitat", async (request, response) => {
 		const data = await Pokemon.getPokemonByHabitat(habitat);
 		response.status(200).json(data);
 	} catch (error) {
-		sendError(response, error, "Pokemon Sorted By Habitat");
+		response.status(500).json(error.message);
 	}
 });
 
