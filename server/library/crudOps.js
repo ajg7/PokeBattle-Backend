@@ -3,7 +3,7 @@ const getAll = async (response, query, name, ...args) => {
 		const data = await query(...args);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json(error.message, "Cannot connect to Heroku");
 	}
 };
 
