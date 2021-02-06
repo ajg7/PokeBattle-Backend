@@ -3,7 +3,7 @@ const getAll = async (response, query, ...args) => {
 		const data = await query(...args);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message, "Cannot connect to Heroku");
+		response.status(500).json(error.message);
 	}
 };
 
@@ -28,7 +28,6 @@ const add = async (response, query, ...args) => {
 const update = async (response, query, ...args) => {
 	try {
 		const data = await query(...args);
-		if (!data) throw new Error("Not Found");
 		response.status(204).json(data);
 	} catch (error) {
 		response.status(404).json(error.message);

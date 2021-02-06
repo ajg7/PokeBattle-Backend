@@ -2,8 +2,13 @@ const router = require("express").Router();
 const { crudOps } = require("../../library");
 const Pokemon = require("./pokemonModel");
 
-router.get("/", (request, response) => {
-	crudOps.getAll(response, Pokemon.getAllPokemon);
+router.get("/", async (request, response) => {
+	try {
+		crudOps.getAll(response, Pokemon.getAllPokemon);
+	}
+	catch (error) {
+		response.status(500).json(error.message);
+	}
 });
 
 router.get("/search", async (request, response) => {
