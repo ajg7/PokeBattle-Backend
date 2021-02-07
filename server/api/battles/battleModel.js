@@ -11,7 +11,7 @@ const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => 
 	const battlesId = id.rows[0].id + 1;
 	const query = {
 		text: "INSERT INTO battles VALUES ($1, $2, $3, $4, $5) RETURNING id",
-		values: [battlesId, user_Id, team_Id, player_score, challenger_score]
+		values: [battlesId, user_Id, team_Id, player_score, challenger_score],
 	};
 	const data = await client.query(query);
 	return data.rows[0];
@@ -20,8 +20,14 @@ const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => 
 	// 	.returning("id");
 };
 
-const updateScores = async (id, scores) => {
-	return db("battles").where({ id }).update(scores).returning("id");
+const updateScores = async (id, playerScore, challengerScore) => {
+	const query = {
+		text:
+			"UPDATE battles SET player_score = $1, challenger_score = $2 WHERE id = $3 RETURNING id",
+		values: [playerScore, challengerScore, id],
+	};
+	const data = await client.query(query);
+	return data.rows[0];
 };
 
 const getScoresByUserId = async user_Id => {

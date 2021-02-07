@@ -22,9 +22,9 @@ router.post("/", async (request, response) => {
 
 router.put("/:id", async (request, response) => {
 	const { id } = request.params;
-	const scores = request.body;
+	const { playerScore, challengerScore } = request.body;
 	try {
-		const battleId = await Battle.updateScores(id, scores);
+		const battleId = await Battle.updateScores(id, playerScore, challengerScore);
 		response.status(204).json(battleId);
 	} catch (error) {
 		response.status(500).json({ error: error.message });
