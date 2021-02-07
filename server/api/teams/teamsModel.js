@@ -34,8 +34,9 @@ const updateTeamName = async (id, team_name) => {
 	return data.rows[0];
 };
 
-const removeTeam = id => {
-	return db("teams").where({ id }).del();
+const removeTeam = async id => {
+	const data = await client.query(`DELETE FROM teams WHERE teams.id = ${id} RETURNING *`);
+	return data.rows[0];
 };
 
 module.exports = {
