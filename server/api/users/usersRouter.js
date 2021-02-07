@@ -9,7 +9,7 @@ router.post("/login", (request, response) => {
 	const { email, password } = request.body;
 	if (isValid(request.body)) {
 		Users.findBy({ email: email })
-			.then(([user]) => {
+			.then((user) => {
 				if (user && bcryptjs.compareSync(password, user.password)) {
 					const token = tokenHelper.getJwt(user);
 					response.status(200).json({ message: "Welcome!", token, userId: user.id });
@@ -17,7 +17,7 @@ router.post("/login", (request, response) => {
 					response.status(400).json({ message: "Invalid Characters" });
 				}
 			})
-			.catch(error => response.status(500).json(error.message));
+			.catch(error => response.status(500).json({ error: error.message }));
 	} else {
 		response.status(400).json({ message: "Please Provide Email and Password" });
 	}
@@ -32,7 +32,8 @@ router.post("/signup", (request, response) => {
 	const token = tokenHelper.getJwt(credentials);
 	Users.register(credentials)
 		.then(userId => {
-			response.status(201).json({ token, userId: userId[0] });
+			console.log(userId);
+			response.status(201).json({ token, userId: userId });
 		})
 		.catch(error => {
 			response.status(409).json({ error: error.message });
