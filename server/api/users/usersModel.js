@@ -26,15 +26,21 @@ const findBy = async filter => {
 };
 
 // User can be deleted
-const removeUser = id => db("users").where({ id }).del();
-
-// User can record their score on "Who's that pokemon?"
-const updatePoints = (id, points) => {
-	return db("users").where({ id }).update({ total_points: points });
+const removeUser = async id => {
+	const data = await client.query(`DELETE FROM users WHERE users.id = ${id} RETURNING users.id`);
+	return data.rows[0];
 };
 
-const getTotalPoints = id => {
-	return db("users").where({ id }).select("total_points");
+// User can record their score on "Who's that pokemon?"
+const updatePoints = async (id, points) => {
+	const data = await client.query(`UPDATE users SET total_points = ${points} WHERE users.id = ${id}`);
+	return data;
+	// return db("users").where({ id }).update({ total_points: points });
+};
+
+const getTotalPoints = async id => {
+	const data = await client.query(`SELECT total_points FROM users WHERE users.id = ${id}`);
+	return data.rows[0];
 };
 
 module.exports = {
