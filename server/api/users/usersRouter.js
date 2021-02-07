@@ -9,7 +9,7 @@ router.post("/login", (request, response) => {
 	const { email, password } = request.body;
 	if (isValid(request.body)) {
 		Users.findBy({ email: email })
-			.then((user) => {
+			.then(user => {
 				if (user && bcryptjs.compareSync(password, user.password)) {
 					const token = tokenHelper.getJwt(user);
 					response.status(200).json({ message: "Welcome!", token, userId: user.id });

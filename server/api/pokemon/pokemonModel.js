@@ -62,7 +62,7 @@ const getPokemonByHeight = async order => {
 const getPokemonByHabitat = async habitat => {
 	const query = {
 		text: "SELECT * FROM pokemon WHERE habitat = $1 ORDER BY name",
-		values: [habitat]
+		values: [habitat],
 	};
 	const data = await client.query(query);
 	return data.rows;
