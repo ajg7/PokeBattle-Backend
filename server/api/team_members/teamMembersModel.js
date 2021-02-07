@@ -1,17 +1,24 @@
 const db = require("../../db/db-config");
+const client = require("../../../db-config");
 
-const addPokemonToTeam = (team_Id, pokemon_Id) => {
-	return db("team_members")
-		.where({ team_Id })
-		.insert({ pokemon_Id, team_Id })
-		.returning("team_Id");
+const addPokemonToTeam = async (team_Id, pokemon_Id) => {
+	const query = {
+		text: "INSERT INTO team_members VALUES ($1, $2, null) RETURNING *",
+		values: [pokemon_Id, team_Id]
+	};
+	const data = await client.query(query);
+	return data.rows[0].team_Id;
+	// return db("team_members")
+	// 	.where({ team_Id })
+	// 	.insert({ pokemon_Id, team_Id })
+	// 	.returning("team_Id");
 };
 
-const removePokemonInTeam = (team_Id, pokemon_Id) => {
+const removePokemonInTeam = async (team_Id, pokemon_Id) => {
 	return db("team_members").where({ team_Id, pokemon_Id }).del();
 };
 
-const updateNickName = (team_Id, pokemon_Id, nickname) => {
+const updateNickName = async (team_Id, pokemon_Id, nickname) => {
 	return db("team_members").where({ team_Id, pokemon_Id }).update({ nickname });
 };
 

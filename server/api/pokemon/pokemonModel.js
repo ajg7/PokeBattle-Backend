@@ -1,3 +1,4 @@
+// If you remove db then it crashes, so don't remove it
 const db = require("../../db/db-config");
 const client = require("../../../db-config");
 
