@@ -31,13 +31,22 @@ const updateScores = async (id, playerScore, challengerScore) => {
 };
 
 const getScoresByUserId = async user_Id => {
-	return db("battles")
-		.where({ user_Id })
-		.select("id", "team_Id", "player_score", "challenger_score");
+	const data = await client.query("SELECT * from battles");
+	const rows = data.rows;
+	const filteredRows = rows.filter(battle => battle.user_Id === +user_Id);
+	return filteredRows;
+	// return db("battles")
+	// 	.where({ user_Id })
+	// 	.select("id", "team_Id", "player_score", "challenger_score");
 };
 
 const getScoresByTeamId = async team_Id => {
-	return db("battles").where({ team_Id });
+	const data = await client.query("SELECT * from battles");
+	const rows = data.rows;
+	const filteredRows = rows.filter(battle => battle.team_Id === +team_Id);
+	console.log(filteredRows);
+	return filteredRows;
+	// return db("battles").where({ team_Id });
 };
 
 module.exports = {
