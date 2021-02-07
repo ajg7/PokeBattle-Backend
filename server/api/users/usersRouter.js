@@ -68,7 +68,7 @@ router.get("/points/:id", async (request, response) => {
 	const { id } = request.params;
 	try {
 		const data = await Users.getTotalPoints(id);
-		response.status(200).json(data[0]);
+		response.status(200).json(data);
 	} catch (error) {
 		response.status(500).json({ error: error.message });
 	}
