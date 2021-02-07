@@ -1,4 +1,3 @@
-const db = require("../../db/db-config");
 const client = require("../../../db-config");
 
 const getTeamById = async id => {

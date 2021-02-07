@@ -1,6 +1,5 @@
 const db = require("../../db/db-config");
 const client = require("../../../db-config");
-// client.connect();
 
 // Get All Pokemon
 const getAllPokemon = async () => {

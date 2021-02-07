@@ -2,11 +2,15 @@ const db = require("../../db/db-config");
 const client = require("../../../db-config");
 
 const getAllTypes = async () => {
-	const data = await client.query("SELECT DISTINCT type1 FROM pokemon ORDER BY type1");
+	const data = await client.query("SELECT DISTINCT type1 AS type FROM pokemon ORDER BY type1");
 	return data.rows;
 };
 
 const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => {
+	const query = {
+		text: "INSERT INTO battles ()"
+	};
+	const data = await client.query(query);
 	return db("battles")
 		.insert({ user_Id, team_Id, player_score, challenger_score })
 		.returning("id");
