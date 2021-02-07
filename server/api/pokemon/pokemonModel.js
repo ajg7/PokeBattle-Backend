@@ -1,8 +1,12 @@
 const db = require("../../db/db-config");
+const client = require("../../../db-config");
+client.connect();
 
 // Get All Pokemon
-const getAllPokemon = () => {
-	return db("pokemon");
+const getAllPokemon = async () => {
+	const data = await client.query("SELECT * FROM pokemon");
+	return data.rows;
+	// return db("pokemon");
 };
 
 //Get a Specific Pokemon
