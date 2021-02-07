@@ -22,9 +22,9 @@ router.get("/user/:userId", async (request, response) => {
 });
 
 router.post("/", async (request, response) => {
-	const { userId, teamName } = request.body;
+	const { user_Id, team_name } = request.body;
 	try {
-		const data = await Teams.makeTeam(userId, teamName);
+		const data = await Teams.makeTeam(user_Id, team_name);
 		response.status(201).json(data);
 	} catch (error) {
 		response.status(500).json({ error: error.message });
