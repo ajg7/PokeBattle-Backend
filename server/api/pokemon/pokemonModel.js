@@ -12,45 +12,60 @@ const getAllPokemon = async () => {
 const getPokemonByName = async pokemonName => {
 	const query = {
 		text: "SELECT * FROM pokemon WHERE name = $1",
-		values: [pokemonName]
+		values: [pokemonName],
 	};
 	const data = await client.query(query);
 	return data.rows[0];
 };
 
 // Get Pokemon by their type
-const getPokemonByType = type => {
-	return db("pokemon").where("type1", "=", type).orWhere("type2", "=", type).orderBy("name");
+const getPokemonByType = async type => {
+	const query = {
+		text: "SELECT * FROM pokemon WHERE type1 = $1 OR type2 = $1 ORDER BY name",
+		values: [type],
+	};
+	const data = await client.query(query);
+	return data.rows;
 };
 
 // Get Pokemon in A - Z ordering
-const getPokemonAlphabetically = () => {
-	return db("pokemon").orderBy("name");
+const getPokemonAlphabetically = async () => {
+	const data = await client.query("SELECT * FROM pokemon ORDER BY name");
+	return data.rows;
 };
 
 // Get Pokemon in Z - A ordering
-const getPokemonReverseAlphabetically = () => {
-	return db("pokemon").orderBy("name", "desc");
+const getPokemonReverseAlphabetically = async () => {
+	const data = await client.query("SELECT * FROM pokemon ORDER BY name DESC");
+	return data.rows;
 };
 
 // Get Pokemon by Legendary, Ancient, or Mythical Status
-const getPokemonByStatus = status => {
-	return db("pokemon").where(`${status}`, "=", true).orderBy("name");
+const getPokemonByStatus = async status => {
+	const data = await client.query(`SELECT * FROM pokemon WHERE ${status} = true ORDER BY name`);
+	return data.rows;
 };
 
 // Order Pokemon by their Weight
-const getPokemonByWeight = order => {
-	return db("pokemon").orderBy("weight", `${order}`);
+const getPokemonByWeight = async order => {
+	const data = await client.query(`SELECT * FROM pokemon ORDER BY weight ${order}`);
+	return data.rows;
 };
 
 // Order Pokemon by their Height
-const getPokemonByHeight = order => {
-	return db("pokemon").orderBy("height", `${order}`);
+const getPokemonByHeight = async order => {
+	const data = await client.query(`SELECT * FROM pokemon ORDER BY height ${order}`);
+	return data.rows;
 };
 
 // Order Pokemon by their Habitat
-const getPokemonByHabitat = habitat => {
-	return db("pokemon as P").where({ habitat }).orderBy("P.name");
+const getPokemonByHabitat = async habitat => {
+	const query = {
+		text: "SELECT * FROM pokemon WHERE habitat = $1 ORDER BY name",
+		values: [habitat],
+	};
+	const data = await client.query(query);
+	return data.rows;
 };
 
 module.exports = {

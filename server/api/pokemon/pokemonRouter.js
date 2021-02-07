@@ -27,7 +27,7 @@ router.get("/search/type", async (request, response) => {
 		const data = await Pokemon.getPokemonByType(type);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -37,7 +37,7 @@ router.get("/asc", async (request, response) => {
 		const data = await Pokemon.getPokemonAlphabetically();
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -47,7 +47,7 @@ router.get("/desc", async (request, response) => {
 		const data = await Pokemon.getPokemonReverseAlphabetically();
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -57,7 +57,7 @@ router.get("/status", async (request, response) => {
 		const data = await Pokemon.getPokemonByStatus(status);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -71,7 +71,7 @@ router.get("/weight", async (request, response) => {
 		const data = await Pokemon.getPokemonByWeight(order);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -85,7 +85,7 @@ router.get("/height", async (request, response) => {
 		const data = await Pokemon.getPokemonByHeight(order);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
@@ -96,7 +96,7 @@ router.get("/habitat", async (request, response) => {
 		const data = await Pokemon.getPokemonByHabitat(habitat);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(500).json(error.message);
+		response.status(500).json({ error: error.message });
 	}
 });
 
