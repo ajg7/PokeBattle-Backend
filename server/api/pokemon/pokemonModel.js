@@ -6,17 +6,16 @@ client.connect();
 const getAllPokemon = async () => {
 	const data = await client.query("SELECT * FROM pokemon");
 	return data.rows;
-	// return db("pokemon");
-};
-
-//Get a Specific Pokemon
-const getPokemonById = id => {
-	return db("pokemon").where({ id });
 };
 
 // Get Pokemon by Their Name
-const getPokemonByName = pokemonName => {
-	return db("pokemon").where("name", "=", pokemonName);
+const getPokemonByName = async pokemonName => {
+	const query = {
+		text: "SELECT * FROM pokemon WHERE name = $1",
+		values: [pokemonName]
+	};
+	const data = await client.query(query);
+	return data.rows[0];
 };
 
 // Get Pokemon by their type
@@ -56,7 +55,6 @@ const getPokemonByHabitat = habitat => {
 
 module.exports = {
 	getAllPokemon,
-	getPokemonById,
 	getPokemonByName,
 	getPokemonByType,
 	getPokemonAlphabetically,

@@ -16,7 +16,7 @@ router.get("/search", async (request, response) => {
 		const data = await Pokemon.getPokemonByName(pokemon);
 		response.status(200).json(data);
 	} catch (error) {
-		response.status(404).json({ message: "Invalid entry" });
+		response.status(404).json({ error: error.message });
 	}
 });
 
