@@ -1,10 +1,13 @@
 DROP TABLE IF EXISTS likes;
 
 CREATE TABLE public.likes (
-    id integer NOT NULL,
-    team_name character varying(255) NOT NULL,
+    id SERIAL PRIMARY KEY,
+    pokemon_Id integer NOT NULL,
     user_Id integer NOT NULL,
-    PRIMARY KEY (id),
+    FOREIGN KEY (pokemon_Id)
+        REFERENCES pokemon(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (user_Id)
         REFERENCES users(id)
         ON DELETE CASCADE
