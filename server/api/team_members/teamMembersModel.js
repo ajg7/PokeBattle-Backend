@@ -15,15 +15,32 @@ const addPokemonToTeam = async (team_Id, pokemon_Id) => {
 };
 
 const removePokemonInTeam = async (team_Id, pokemon_Id) => {
+	const query = {
+		text: "DELETE FROM team_members WHERE team_Id = $1 AND pokemon_Id = $2",
+		values: [team_Id, pokemon_Id]
+	};
+	const data = await client.query(query);
+	console.log(data);
 	return db("team_members").where({ team_Id, pokemon_Id }).del();
 };
 
 const updateNickName = async (team_Id, pokemon_Id, nickname) => {
+	const query = {
+		text: "UPDATE team_members SET nickname = $1 WHERE team_Id = $2 AND pokemon_Id = $3",
+		values: [nickname, team_Id, pokemon_Id]
+	};
+	const data = await client.query(query);
+	console.log(data);
 	return db("team_members").where({ team_Id, pokemon_Id }).update({ nickname });
 };
 
 const getPokemonData = async user_Id => {
 	const map = new Map();
+	const query = {
+		text: "SELECT * FROM team_members AS TM JOIN pokemon AS P ON P.id=TM.pokemon_Id"
+	};
+	const data = await client.query(query);
+	console.log(data);
 	const resultQuery = await db("teams as T")
 		.leftJoin("team_members as TM", "TM.team_Id", "=", "T.id")
 		.leftJoin("pokemon as P", "P.id", "=", "TM.pokemon_Id")

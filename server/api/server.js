@@ -6,6 +6,7 @@ const UserRouter = require("./users/usersRouter");
 const TeamRouter = require("./teams/teamsRouter");
 const TeamMembersRouter = require("./team_members/teamMembersRouter");
 const BattleRouter = require("./battles/battleRouter");
+const LikesRouter = require("./likes/likesRouter");
 
 const server = express();
 
@@ -21,6 +22,7 @@ server.use(["/user", "/users"], logger, UserRouter);
 server.use(["/team", "/teams"], logger, auth, TeamRouter);
 server.use(["/team_member", "/team_members"], logger, auth, TeamMembersRouter);
 server.use(["/battle", "/battles"], logger, auth, BattleRouter);
+server.use("/likes", logger, LikesRouter);
 
 server.get("/", (request, response) => {
 	response.status(200).json({ Frankenstein: "It's alive!!!!!", timeStamp: Date.now() });
