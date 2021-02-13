@@ -36,7 +36,6 @@ const updatePoints = async (id, points) => {
 		`UPDATE users SET total_points = ${points} WHERE users.id = ${id}`
 	);
 	return data;
-	// return db("users").where({ id }).update({ total_points: points });
 };
 
 const getTotalPoints = async id => {
