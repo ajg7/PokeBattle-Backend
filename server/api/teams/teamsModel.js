@@ -6,16 +6,11 @@ const getTeamById = async id => {
 };
 
 const getTeamsByUserId = async user_Id => {
-	const data = await client.query("SELECT * FROM teams");
-	const rows = data.rows;
-	const filteredData = rows.filter(team => team.user_Id === +user_Id);
-	return filteredData;
-	// return db("teams").where({ user_Id });
+	const data = await client.query(`SELECT * FROM teams WHERE user_Id = ${user_Id}`);
+	return data.rows;
 };
 
 const makeTeam = async (userId, teamName) => {
-	// const id = await client.query("SELECT id from teams ORDER BY id DESC");
-	// const teamsId = id.rows[0].id + 1;
 	const query = {
 		text: "INSERT INTO teams (team_name, user_Id) VALUES($1, $2) RETURNING teams.id",
 		values: [teamName, userId],
@@ -23,15 +18,6 @@ const makeTeam = async (userId, teamName) => {
 	const data = await client.query(query);
 	return data.rows[0];
 	
-};
-
-const updateTeamName = async (id, team_name) => {
-	const query = {
-		text: "UPDATE teams SET team_name = $1 WHERE Id = $2 RETURNING *",
-		values: [team_name, id],
-	};
-	const data = await client.query(query);
-	return data.rows[0];
 };
 
 const removeTeam = async id => {
@@ -43,6 +29,5 @@ module.exports = {
 	getTeamById,
 	getTeamsByUserId,
 	makeTeam,
-	updateTeamName,
 	removeTeam,
 };

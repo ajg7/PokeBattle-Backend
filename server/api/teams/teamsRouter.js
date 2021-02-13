@@ -31,17 +31,6 @@ router.post("/", async (request, response) => {
 	}
 });
 
-router.put("/:id", async (request, response) => {
-	const { teamName } = request.body;
-	const { id } = request.params;
-	try {
-		const data = await Teams.updateTeamName(id, teamName);
-		response.status(204).json(data);
-	} catch (error) {
-		response.status(500).json({ error: error.message });
-	}
-});
-
 router.delete("/:id", async (request, response) => {
 	const { id } = request.params;
 	try {
