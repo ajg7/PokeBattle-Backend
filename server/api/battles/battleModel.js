@@ -7,7 +7,8 @@ const getAllTypes = async () => {
 
 const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => {
 	const query = {
-		text: "INSERT INTO battles (user_Id, team_Id, player_score, challenger_score) VALUES ($1, $2, $3, $4) RETURNING id",
+		text:
+			"INSERT INTO battles (user_Id, team_Id, player_score, challenger_score) VALUES ($1, $2, $3, $4) RETURNING id",
 		values: [user_Id, team_Id, player_score, challenger_score],
 	};
 	const data = await client.query(query);
@@ -32,7 +33,6 @@ const getScoresByUserId = async user_Id => {
 const getScoresByTeamId = async team_Id => {
 	const data = await client.query(`SELECT * from battles WHERE team_Id = ${team_Id}`);
 	return data.rows;
-	// return db("battles").where({ team_Id });
 };
 
 module.exports = {

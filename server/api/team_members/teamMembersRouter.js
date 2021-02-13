@@ -26,8 +26,8 @@ router.put("/nickname/:pokemonId", async (request, response) => {
 	const { pokemonId } = request.params;
 	const { teamId, nickname } = request.body;
 	try {
-		await TeamMembers.updateNickName(teamId, pokemonId, nickname);
-		response.status(204).end();
+		const data = await TeamMembers.updateNickName(teamId, pokemonId, nickname);
+		response.status(200).json(data);
 	} catch (error) {
 		response.status(500).json({ error: error.message });
 	}

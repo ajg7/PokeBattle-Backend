@@ -17,7 +17,6 @@ const makeTeam = async (userId, teamName) => {
 	};
 	const data = await client.query(query);
 	return data.rows[0];
-	
 };
 
 const removeTeam = async id => {

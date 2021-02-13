@@ -5,40 +5,42 @@ const addPokemonToTeam = async (team_Id, pokemon_Id) => {
 	console.log(team_Id);
 	const query = {
 		text: "INSERT INTO team_members (pokemon_Id, team_Id) VALUES ($1, $2) RETURNING *",
-		values: [pokemon_Id, team_Id]
+		values: [pokemon_Id, team_Id],
 	};
 	const data = await client.query(query);
 	return data.rows;
-	// return db("team_members")
-	// 	.where({ team_Id })
-	// 	.insert({ pokemon_Id, team_Id })
-	// 	.returning("team_Id");
 };
 
 const removePokemonInTeam = async (team_Id, pokemon_Id) => {
 	const query = {
 		text: "DELETE FROM team_members WHERE team_Id = $1 AND pokemon_Id = $2",
-		values: [team_Id, pokemon_Id]
+		values: [team_Id, pokemon_Id],
 	};
-	const data = await client.query(query);
-	console.log(data);
-	return db("team_members").where({ team_Id, pokemon_Id }).del();
+	try {
+		await client.query(query);
+		return `${pokemon_Id} has been deleted!`;
+	} catch (error) {
+		return error;
+	}
 };
 
 const updateNickName = async (team_Id, pokemon_Id, nickname) => {
 	const query = {
 		text: "UPDATE team_members SET nickname = $1 WHERE team_Id = $2 AND pokemon_Id = $3",
-		values: [nickname, team_Id, pokemon_Id]
+		values: [nickname, team_Id, pokemon_Id],
 	};
-	const data = await client.query(query);
-	console.log(data);
-	return db("team_members").where({ team_Id, pokemon_Id }).update({ nickname });
+	try {
+		await client.query(query);
+		return `${pokemon_Id}'s nickname has been updated to ${nickname}`;
+	} catch (error) {
+		return error;
+	}
 };
 
 const getPokemonData = async user_Id => {
 	const map = new Map();
 	const query = {
-		text: "SELECT * FROM team_members AS TM JOIN pokemon AS P ON P.id=TM.pokemon_Id"
+		text: "SELECT * FROM team_members AS TM JOIN pokemon AS P ON P.id=TM.pokemon_Id",
 	};
 	const data = await client.query(query);
 	console.log(data);
