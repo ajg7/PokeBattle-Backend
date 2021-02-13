@@ -41,7 +41,7 @@ router.get("/user", async (request, response) => {
 	}
 });
 
-router.get("/battles/:teamId", async (request, response) => {
+router.get("/:teamId", async (request, response) => {
 	const { teamId } = request.params;
 	try {
 		const data = await Battle.getScoresByTeamId(teamId);
