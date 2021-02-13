@@ -2,12 +2,13 @@ const db = require("../../db/db-config");
 const client = require("../../../db-config");
 
 const addPokemonToTeam = async (team_Id, pokemon_Id) => {
+	console.log(team_Id);
 	const query = {
-		text: "INSERT INTO team_members VALUES ($1, $2, null) RETURNING *",
+		text: "INSERT INTO team_members (pokemon_Id, team_Id) VALUES ($1, $2) RETURNING *",
 		values: [pokemon_Id, team_Id]
 	};
 	const data = await client.query(query);
-	return data.rows[0].team_Id;
+	return data.rows;
 	// return db("team_members")
 	// 	.where({ team_Id })
 	// 	.insert({ pokemon_Id, team_Id })

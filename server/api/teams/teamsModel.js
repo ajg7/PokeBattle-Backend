@@ -14,14 +14,15 @@ const getTeamsByUserId = async user_Id => {
 };
 
 const makeTeam = async (userId, teamName) => {
-	const id = await client.query("SELECT id from teams ORDER BY id DESC");
-	const teamsId = id.rows[0].id + 1;
+	// const id = await client.query("SELECT id from teams ORDER BY id DESC");
+	// const teamsId = id.rows[0].id + 1;
 	const query = {
-		text: "INSERT INTO teams VALUES($1, $2, $3) RETURNING teams.id",
-		values: [teamsId, teamName, userId],
+		text: "INSERT INTO teams (team_name, user_Id) VALUES($1, $2) RETURNING teams.id",
+		values: [teamName, userId],
 	};
 	const data = await client.query(query);
 	return data.rows[0];
+	
 };
 
 const updateTeamName = async (id, team_name) => {

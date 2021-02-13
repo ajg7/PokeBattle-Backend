@@ -6,11 +6,9 @@ const getAllTypes = async () => {
 };
 
 const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => {
-	const id = await client.query("SELECT id from battles ORDER BY id DESC");
-	const battlesId = id.rows[0].id + 1;
 	const query = {
-		text: "INSERT INTO battles VALUES ($1, $2, $3, $4, $5) RETURNING id",
-		values: [battlesId, user_Id, team_Id, player_score, challenger_score],
+		text: "INSERT INTO battles (user_Id, team_Id, player_score, challenger_score) VALUES ($1, $2, $3, $4) RETURNING id",
+		values: [user_Id, team_Id, player_score, challenger_score],
 	};
 	const data = await client.query(query);
 	return data.rows[0];
