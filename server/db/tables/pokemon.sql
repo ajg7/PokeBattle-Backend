@@ -5,7 +5,7 @@ CREATE TABLE pokemon(
     name VARCHAR(255) NOT NULL,
     type1 VARCHAR(255) NOT NULL,
     type2 VARCHAR(255),
-    "imgURL" VARCHAR(255) NOT NULL,
+    imgURL VARCHAR(255) NOT NULL,
     number INTEGER NOT NULL,
     height INTEGER NOT NULL,
     weight INTEGER NOT NULL,
@@ -15,11 +15,11 @@ CREATE TABLE pokemon(
     mythical BOOLEAN,
     ancient BOOLEAN,
     region VARCHAR(255) NOT NULL,
-    "modern_imgURL" VARCHAR(255) NOT NULL,
-    "shiny_imgURL" VARCHAR(255) NOT NULL
+    modern_imgURL VARCHAR(255) NOT NULL,
+    shiny_imgURL VARCHAR(255) NOT NULL
 );
 
-COPY pokemon (id, name, type1, type2, "imgURL", number, height, weight, entry, habitat, legendary, mythical, ancient, region, "modern_imgURL", "shiny_imgURL") FROM STDIN;
+COPY pokemon (id, name, type1, type2, imgURL, number, height, weight, entry, habitat, legendary, mythical, ancient, region, modern_imgURL, shiny_imgURL) FROM STDIN;
 1	bulbasaur	grass	poison	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/1.png	1	7	69	A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.	grassland	f	f	f	kanto	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png
 2	ivysaur	grass	poison	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/2.png	2	10	130	When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.	grassland	f	f	f	kanto	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png
 3	venusaur	grass	poison	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/3.png	3	6	85	The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.	grassland	f	f	f	kanto	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png	https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png

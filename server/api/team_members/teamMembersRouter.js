@@ -4,6 +4,7 @@ const TeamMembers = require("./teamMembersModel");
 router.post("/:pokemonId", async (request, response) => {
 	const { teamId } = request.body;
 	const { pokemonId } = request.params;
+	console.log(teamId);
 	try {
 		const data = await TeamMembers.addPokemonToTeam(teamId, pokemonId);
 		response.status(201).json(data);
@@ -33,10 +34,10 @@ router.put("/nickname/:pokemonId", async (request, response) => {
 	}
 });
 
-router.get("/data/:teamId", async (request, response) => {
-	const { teamId } = request.params;
+router.get("/data/:userId", async (request, response) => {
+	const { userId } = request.params;
 	try {
-		const data = await TeamMembers.getPokemonData(teamId);
+		const data = await TeamMembers.getPokemonData(userId);
 		const entries = Array.from(data.entries());
 		response.status(200).json(entries);
 	} catch (error) {

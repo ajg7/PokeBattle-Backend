@@ -2,7 +2,6 @@ const db = require("../../db/db-config");
 const client = require("../../../db-config");
 
 const addPokemonToTeam = async (team_Id, pokemon_Id) => {
-	console.log(team_Id);
 	const query = {
 		text: "INSERT INTO team_members (pokemon_Id, team_Id) VALUES ($1, $2) RETURNING *",
 		values: [pokemon_Id, team_Id],
@@ -39,24 +38,19 @@ const updateNickName = async (team_Id, pokemon_Id, nickname) => {
 
 const getPokemonData = async user_Id => {
 	const map = new Map();
-	const query = {
-		text: "SELECT * FROM team_members AS TM JOIN pokemon AS P ON P.id=TM.pokemon_Id",
-	};
-	const data = await client.query(query);
-	console.log(data);
-	const resultQuery = await db("teams as T")
-		.leftJoin("team_members as TM", "TM.team_Id", "=", "T.id")
-		.leftJoin("pokemon as P", "P.id", "=", "TM.pokemon_Id")
-		.where({ user_Id })
-		.select(
-			"T.id as team_Id",
-			"TM.pokemon_Id",
-			"P.name",
-			"P.imgURL",
-			"T.team_name",
-			"TM.nickname"
-		);
-	for (const pokemon of resultQuery) {
+
+	const resultQuery = await client.query(
+		`
+		SELECT P.name, P.imgurl, TM.pokemon_Id, T.team_name, TM.nickname, T.id AS team_Id FROM teams AS T
+		LEFT JOIN team_members AS TM
+		ON TM.team_Id = T.id
+		LEFT JOIN pokemon AS P
+		ON TM.pokemon_Id = P.id
+		WHERE user_Id = ${user_Id}
+		`
+	);
+
+	for (const pokemon of resultQuery.rows) {
 		if (map.get(pokemon.team_name) === undefined) {
 			map.set(pokemon.team_name, []);
 		}
