@@ -63,18 +63,16 @@ const getPokemonData = async user_Id => {
 };
 
 const getPokemonInTeam = async team_Id => {
-	return db("team_members as TM")
-		.join("pokemon as P", "P.id", "=", "TM.pokemon_Id")
-		.where({ team_Id })
-		.select(
-			"TM.pokemon_Id",
-			"P.name",
-			"TM.nickname",
-			"P.type1",
-			"P.type2",
-			"P.imgURL",
-			"P.number"
-		);
+
+	const data = await client.query(
+		`
+		SELECT TM.pokemon_Id, P.name, TM.nickname, P.type1, P.type2, P.imgurl, P.number FROM team_members AS TM
+		JOIN pokemon AS P
+		ON P.id = TM.pokemon_Id
+		WHERE team_Id = ${team_Id}
+		`
+	);
+	return data.rows;
 };
 
 module.exports = {
