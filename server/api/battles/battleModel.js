@@ -12,9 +12,6 @@ const makeABattle = async (user_Id, team_Id, player_score, challenger_score) => 
 	};
 	const data = await client.query(query);
 	return data.rows[0];
-	// return db("battles")
-	// 	.insert({ user_Id, team_Id, player_score, challenger_score })
-	// 	.returning("id");
 };
 
 const updateScores = async (id, playerScore, challengerScore) => {
@@ -28,21 +25,13 @@ const updateScores = async (id, playerScore, challengerScore) => {
 };
 
 const getScoresByUserId = async user_Id => {
-	const data = await client.query("SELECT * from battles");
-	const rows = data.rows;
-	const filteredRows = rows.filter(battle => battle.user_Id === +user_Id);
-	return filteredRows;
-	// return db("battles")
-	// 	.where({ user_Id })
-	// 	.select("id", "team_Id", "player_score", "challenger_score");
+	const data = await client.query(`SELECT * from battles WHERE user_Id = ${user_Id}`);
+	return data.rows;
 };
 
 const getScoresByTeamId = async team_Id => {
-	const data = await client.query("SELECT * from battles");
-	const rows = data.rows;
-	const filteredRows = rows.filter(battle => battle.team_Id === +team_Id);
-	console.log(filteredRows);
-	return filteredRows;
+	const data = await client.query(`SELECT * from battles WHERE team_Id = ${team_Id}`);
+	return data.rows;
 	// return db("battles").where({ team_Id });
 };
 
