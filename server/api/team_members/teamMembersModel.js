@@ -63,7 +63,6 @@ const getPokemonData = async user_Id => {
 };
 
 const getPokemonInTeam = async team_Id => {
-
 	const data = await client.query(
 		`
 		SELECT TM.pokemon_Id, P.name, TM.nickname, P.type1, P.type2, P.imgurl, P.number FROM team_members AS TM
