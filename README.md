@@ -1,6 +1,6 @@
 # PokeBattle- Backend
 
-Backend for the PokeBattle App. Check out [PokeBattle- Frontend](https://github.com/ajg7/PokeBattle-Backend)
+Backend for the PokeBattle App. Check out [PokeBattle- Frontend](https://github.com/ajg7/PokeBattle-Frontend)
 
 ## Set Up
 
